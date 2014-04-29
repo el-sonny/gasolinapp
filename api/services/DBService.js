@@ -1,0 +1,6 @@
+module.exports = {
+	extractEntidades : function(){
+		
+	}
+	
+};

@@ -48,13 +48,13 @@ module.exports.connections = {
   // Run:
   // npm install sails-mongo
   //
-  someMongodbServer: {
+  mongo: {
     adapter   : 'sails-mongo',
     host      : 'localhost',
     port      : 27017,
-    user      : 'username',
-    password  : 'password',
-    database  : 'your_mongo_db_name_here'
+    user      : '',
+    password  : '',
+    database  : 'gasolinapp'
   },
 
   // PostgreSQL is another officially supported relational database. 
