@@ -1,3 +1,3 @@
 # gasolinapp
 
-a [Sails](http://sailsjs.org) application
+GNU 2014 Spaceshiplabs
