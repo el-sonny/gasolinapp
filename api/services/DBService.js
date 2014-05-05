@@ -1,3 +1,6 @@
+/*
+ogr2ogr -f GeoJSON -t_srs crs:84 ESPV10132DIC13A.geojson ESPV10132DIC13A.shp
+*/
 module.exports = {
 	extractCiudades : function(){
 		require('async');
