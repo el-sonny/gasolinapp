@@ -1,0 +1,30 @@
+<script type='text/javascript'>
+    window.gas = <%- JSON.stringify(gas) %>;
+</script>
+<div class='container' ng-controller='gasolineraCTL'>
+	<div class='row'>
+		<h2><%- title -%></h2>
+		<div class='col-md-4'>
+			<p><b>Nombre:</b> {{gas.nombre}}</p>
+			<p><b>Razon social:</b> {{gas.razon_social}}</p>
+			<p><b>Domicilio:</b> {{gas.domicilio}}</p>
+			<p><b>Colonia:</b> {{gas.colonia}}</p>
+			<p><b>Poblacion:</b> {{gas.poblacion}}</p>
+			<hr/>
+			<p><label>Texto de busqueda</label></p>
+			<div class="input-group">
+		      <input type='text' placeholder='texto a buscar' ng-model='gas.searchString' class='form-control' />
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button" ng-click='geolocate()'>Buscar!</button>
+		      </span>
+		    </div><!-- /input-group -->
+			
+		</div>
+		<div class='col-md-8'>
+			<google-map center="map.center" zoom="map.zoom">
+				<marker coords='map.center'></marker>
+			</google-map>
+		</div>
+	</div>
+</div>
+<%- block('localScripts', '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlzbyX3J7GwOXdoRwMDfYVbqxNG1D9Jy0&sensor=false" ></script>') %>
