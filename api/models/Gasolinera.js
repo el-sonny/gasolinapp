@@ -8,13 +8,17 @@
 module.exports = {
 
   attributes: {
-  	ciudad:{
-  		model : 'ciudad',
+  	entidad:{
+  		model : 'entidad',
   	},
-  	poblacion:{
-  		type:'string',
-  		index:true
+  	municipio:{
+  		model : 'municipio',
+  	},
+  	estado:{
+  		type: 'string',
+  		index : true
   	}
-  }
+  },
+  migrate : 'safe'
 };
 

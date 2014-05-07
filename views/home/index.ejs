@@ -1,36 +1,10 @@
-<%- partial('../global/jumbotron') -%>
-<div class='container-fluid' ng-controller='gasolinerasCTL'>
-	<div class='row'>
-		<div class='col-md-12'>
-			<h2>Ciudades</h2>
-			<select ui-select2 ng-model="selectedCity" data-placeholder="Busca una ciudad" style='width:100%' ng-change='selectCity()'>
-			    <option value=''></option>
-			    <option ng-repeat='ciudad in ciudades' ng-value="{{ciutad.id}}">{{ciudad.nombre}}</option>
-			</select>
-		</div>
-	</div>
-	<div class='row'>
-		<div class='col-md-12'>
-			<h2>Gasolineras</h2>
-			<table class='table'>
-				<tr>
-					<th>Nombre</th>
-					<th>Razon Social</th>
-					<th>Domicilio</th>
-					<th>Colonia</th>
-					<th>Poblacion</th>
-					<th>Geolocalizada</th>
-				</tr>
-				<tr ng-repeat='gas in gasolineras'>
-					<td>{{gas.nombre}}</td>
-					<td>{{gas.razon_social}}</td>
-					<td>{{gas.domicilio}}</td>
-					<td>{{gas.colonia}}</td>
-					<td>{{gas.poblacion}}</td>
-					<td><a ng-href='/gasolinera/perfil/{{gas.id}}' ng-class='geoGlyph(gas)' class='glyphicon'></a></td>
-				</tr>
 
-			</table>
-		</div>
+<script type='text/javascript'>
+    window.municipios = <%- JSON.stringify(municipios) %>;
+    window.entidades = <%- JSON.stringify(entidades) %>;
+</script>
+<div class='container-fluid' >
+	<div class='row'>
+		<leaflet center='mapCenter'  layers="layers" markers='markers' height="480px"></leaflet>
 	</div>
 </div>

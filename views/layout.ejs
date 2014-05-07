@@ -19,15 +19,19 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/select2/select2.css">
+    <link rel="stylesheet" href="/bower_components/leaflet-dist/leaflet.css">
+    <link rel="stylesheet" href="/bower_components/leaflet.markerclusterer/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="/bower_components/leaflet.markerclusterer/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
 
   </head>
   <body>
-    <%- partial('global/navbar') -%> 
-    
-    
-    <%- body -%>
+    <div ng-controller='homeController'>
+        <%- partial('global/navbar') -%> 
+        <%- body -%>
+    </div>
     
     <footer>
         <div class="container">
@@ -46,11 +50,14 @@
     <script src="/bower_components/select2/select2.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/underscore/underscore-min.js"></script>
-    <script src="/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
     <script src="/bower_components/angular-sails/dist/angular-sails.min.js"></script>
     <script src="/bower_components/angular-ui-select2/src/select2.js"></script>
+    <script src="/bower_components/leaflet-dist/leaflet.js"></script>
+    <script src="/bower_components/leaflet.markerclusterer/dist/leaflet.markercluster.js"></script>
+    <script src="/bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+    <script src="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
     <script src="/js/controller.js"></script>
+    <script src="/js/homeController.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

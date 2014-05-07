@@ -3,28 +3,18 @@
 </script>
 <div class='container' ng-controller='gasolineraCTL'>
 	<div class='row'>
-		<h2><%- title -%></h2>
+		<h2>Estacion {{gas.num}} en {{gas.municipio}}, {{gas.estado}}</h2>
 		<div class='col-md-4'>
-			<p><b>Nombre:</b> {{gas.nombre}}</p>
+			<p><b>Numero:</b> {{gas.num}}</p>
 			<p><b>Razon social:</b> {{gas.razon_social}}</p>
-			<p><b>Domicilio:</b> {{gas.domicilio}}</p>
+			<p><b>Calle:</b> {{gas.calle}}</p>
 			<p><b>Colonia:</b> {{gas.colonia}}</p>
-			<p><b>Poblacion:</b> {{gas.poblacion}}</p>
-			<hr/>
-			<p><label>Texto de busqueda</label></p>
-			<div class="input-group">
-		      <input type='text' placeholder='texto a buscar' ng-model='gas.searchString' class='form-control' />
-		      <span class="input-group-btn">
-		        <button class="btn btn-default" type="button" ng-click='geolocate()'>Buscar!</button>
-		      </span>
-		    </div><!-- /input-group -->
-			
+			<p><b>Localidad:</b> {{gas.localidad}}</p>
+			<p><b>Estado:</b> {{gas.estado}}</p>
+			<p><b>CP:</b> {{gas.cp}}</p>
 		</div>
 		<div class='col-md-8'>
-			<google-map center="map.center" zoom="map.zoom">
-				<marker coords='map.center'></marker>
-			</google-map>
+			<leaflet center='mapCenter' markers='markers' height="480px"></leaflet>
 		</div>
 	</div>
 </div>
-<%- block('localScripts', '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlzbyX3J7GwOXdoRwMDfYVbqxNG1D9Jy0&sensor=false" ></script>') %>

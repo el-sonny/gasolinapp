@@ -4,23 +4,14 @@
  * @description ::
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
+var count = 1;
+var notFound = 0;
 module.exports = {
 	perfil : function(req,res){
-		Gasolinera.findOne({id:req.param('id')}).populate('ciudad').exec(function(e,gas){
+		Gasolinera.findOne({id:req.param('id')}).exec(function(e,gas){
 			if(e) throw(e);
-			if(gas){
-				var title = 'Gasolinapp | Gasolinera defraudadora: '+gas.nombre+' en '+gas.poblacion;
-				res.view({gas:gas,title:title});
-			}	
-		});		
+			res.view({gas:gas});
+		});
 	},
-	geocode : function(req,res){
-		var gm = require('googlemaps');
-		gm.geocode(req.param('id'), function(e,results){
-			if(e) throw(e);
-			console.log(e,results);
-			res.json(results);
-		},'false');			
-	}
 };
+

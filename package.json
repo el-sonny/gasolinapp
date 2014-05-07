@@ -24,7 +24,9 @@
     "grunt-contrib-coffee": "~0.10.1",
     "sails-mongo": "^0.10.0-rc3",
     "async": "^0.8.0",
-    "googlemaps": "^0.1.9"
+    "googlemaps": "^0.1.9",
+    "csv": "^0.3.7",
+    "levenshtein": "^1.0.4"
   },
   "scripts": {
     "start": "node app.js",

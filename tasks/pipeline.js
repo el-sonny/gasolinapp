@@ -17,6 +17,11 @@
 var cssFilesToInject = [
 	'bower_components/bootstrap/dist/css/bootstrap.min.css',
 	'bower_components/select2/select2.css',
+	'bower_components/leaflet-dist/leaflet.css',
+	'bower_components/leaflet.markerclusterer/dist/MarkerCluster.Default.css',
+	'bower_components/leaflet.markerclusterer/dist/MarkerCluster.css',
+	'bower_components/leaflet-dist/leaflet.css',
+	'bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css',
 	'styles/**/*.css'
 ];
 
@@ -32,10 +37,12 @@ var jsFilesToInject = [
 	'bower_components/select2/select2.js',
 	'bower_components/bootstrap/dist/js/bootstrap.min.js',
 	'bower_components/angular/angular.min.js',
-	'bower_components/underscore/underscore-min.js',
-	'bower_components/angular-google-maps/dist/angular-google-maps.min.js',
 	'bower_components/angular-sails/dist/angular-sails.min.js',
 	'bower_components/angular-ui-select2/src/select2.js',
+	'bower_components/leaflet-dist/leaflet.js',
+	'bower_components/leaflet.markerclusterer/dist/leaflet.markercluster.js',
+	'bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js',
+	'bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js',
 
 
 	// All of the rest of your client-side js files
