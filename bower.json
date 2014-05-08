@@ -20,13 +20,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.16",
-    "bootstrap": "~3.1.1",
-    "angular-bootstrap": "~0.11.0",
-    "angular-sails": "~1.0.4",
-    "angular-google-maps": "~1.0.18",
-    "Leaflet.awesome-markers": "~2.0.2",
-    "leaflet": "~0.7.2",
-    "angular-leaflet-directive": "~0.7.6"
-  }
+    "angular-ui-select2": "~0.0.5",
+    "leaflet.markerclusterer": "~0.4.0"
+  },
+  "homepage": "https://github.com/el-sonny/gasolinapp",
+  "private": true
 }
