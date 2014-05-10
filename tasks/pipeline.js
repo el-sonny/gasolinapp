@@ -20,7 +20,6 @@ var cssFilesToInject = [
 	'bower_components/leaflet-dist/leaflet.css',
 	'bower_components/leaflet.markerclusterer/dist/MarkerCluster.Default.css',
 	'bower_components/leaflet.markerclusterer/dist/MarkerCluster.css',
-	'bower_components/leaflet-dist/leaflet.css',
 	'bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css',
 	'styles/**/*.css'
 ];

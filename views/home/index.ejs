@@ -1,10 +1,9 @@
-
 <script type='text/javascript'>
     window.municipios = <%- JSON.stringify(municipios) %>;
     window.entidades = <%- JSON.stringify(entidades) %>;
 </script>
 <div class='container-fluid' >
 	<div class='row'>
-		<leaflet center='mapCenter'  layers="layers" markers='markers' height="480px"></leaflet>
+		<leaflet center='mapCenter(space)'  layers="layers" markers='markers' height="480px"></leaflet>
 	</div>
 </div>
