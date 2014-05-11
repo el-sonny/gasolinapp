@@ -20,4 +20,5 @@ app.controller("gasolineraCTL", function ($scope, $sails) {
         lng: gas.coordenadas[0][0],
         message: gas.num,
     }];
+   
 });

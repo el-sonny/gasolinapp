@@ -81,7 +81,10 @@ app.controller("homeController", function ($scope, $sails) {
 
     }
     
-	
+	$scope.options = {
+        attributionControl : false, 
+        zoomControlPosition: 'bottomleft',
+    }
 
 	$scope.get_gasolineras = function(){
 		$sails.get("/gasolinera",{estado:$scope.selectedEntidad,limit:10000})
