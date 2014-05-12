@@ -28,22 +28,19 @@
 
   </head>
   <body>
-    <div ng-controller='homeController'>
+    <div id='content' ng-controller='homeController'>
         <%- partial('global/navbar') -%> 
         <%- body -%>
-    </div>
     
-    <footer>
-        <div class="container">
-            <p class="pull-right"><a href="#">Regresar al principio</a></p>
+        <footer>
+            <p class="pull-right">FUENTES: <a href="#">PEMEX</a> <a href='#'>Profeco</a></p>
             <p>
-                <a popover="GNU" popover-trigger="mouseenter" href='https://github.com/el-sonny/nomaspoderalpoder' class='copyleft pull-left'>&copy;</a>
-                2014 
                 <a href='http://spaceshiplabs.com'>spaceshiplabs.com</a> &middot; 
                 <a href="https://github.com/el-sonny/gasolinapp">Github</a>
             </p>            
-        </div>
-    </footer>
+        </footer>
+    
+    </div>
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>

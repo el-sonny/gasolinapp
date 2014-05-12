@@ -70,6 +70,35 @@ module.exports = {
 		  console.log(error.message);
 		});
 	},
+	geocodeEntidades : function(){
+		Gasolinera.find({}).exec(function(e,gases){
+			if(e) throw(e);
+			var entidades = [];
+			gases.forEach(function(gas){
+				if(entidades[gas.entidad]){
+					entidades[gas.entidad] = {
+						maxlat : entidades[gas.entidad].maxlat < gas.coordenadas[1] ? gas.coordenadas[1] : entidades[gas.entidad].maxlat,
+						maxlng : entidades[gas.entidad].maxlng < gas.coordenadas[0] ? gas.coordenadas[0] : entidades[gas.entidad].maxlng,
+						minlat : entidades[gas.entidad].minlat > gas.coordenadas[1] ? gas.coordenadas[1] : entidades[gas.entidad].minlat,
+						minlng : entidades[gas.entidad].minlng > gas.coordenadas[0] ? gas.coordenadas[0] : entidades[gas.entidad].minlng,
+					}					
+				}else{
+					entidades[gas.entidad] = {
+						maxlat : gas.coordenadas[1],
+						maxlng : gas.coordenadas[0],
+						minlat : gas.coordenadas[1],
+						minlng : gas.coordenadas[0],	
+					}					
+				}
+			});
+			Entidad.find({}).exec(function(e,ents){
+				ents.forEach(function(entidad){
+					entidad.range = entidades[entidad.id];
+					entidad.save();
+				})
+			});
+		})
+	}
 
 };
 var geocodeString = function(string){

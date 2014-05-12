@@ -1,9 +1,11 @@
-<script type='text/javascript'>
-    window.municipios = <%- JSON.stringify(municipios) %>;
-    window.entidades = <%- JSON.stringify(entidades) %>;
-</script>
-<div class='container-fluid' >
-	<div class='row'>
-		<leaflet center='mapCenter'  layers="layers" markers='markers' defaults='options' height="480px"></leaflet>
+<div class='map-content'>
+	<script type='text/javascript'>
+	    window.municipios = <%- JSON.stringify(municipios) %>;
+	    window.entidades = <%- JSON.stringify(entidades) %>;
+	    window.geo = <%- JSON.stringify(geo) %>;
+	</script>
+	<div class='sidebar'>
+		
 	</div>
+	<leaflet bounds='bounds' center='mapCenter' ng-class='mapClass' class='map' layers="layers" markers='markers' defaults='options' ></leaflet>
 </div>

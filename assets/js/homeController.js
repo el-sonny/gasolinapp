@@ -1,9 +1,11 @@
 app.controller("homeController", function ($scope, $sails) {
 	$scope.mapCenter = {};
+    $scope.bounds = {}
 	$scope.markers = [];
 	$scope.municipios = municipios;
 	$scope.entidades = entidades;
-	$scope.selectedEntidad = 'Quintana Roo';
+	$scope.selectedEntidad = geo;
+    console.log(geo);
 
 	$scope.layers =  {
         baselayers: {
@@ -78,20 +80,21 @@ app.controller("homeController", function ($scope, $sails) {
             icon: 'filter',
             markerColor: 'gray',
         },
-
-    }
-    
+    }  
 	$scope.options = {
         attributionControl : false, 
         zoomControlPosition: 'bottomleft',
     }
-
+    $scope.mapClass = '';
 	$scope.get_gasolineras = function(){
+        $scope.mapClass = 'blur';
 		$sails.get("/gasolinera",{estado:$scope.selectedEntidad,limit:10000})
 		.success(function (data) {
+
 			$scope.gasolineras = data;
 			if(data.length){
 				var markers = [];
+                var entidad = data[0].entidad;
 				data.forEach(function(gas){
 					var razon = gas.razon_social ? gas.razon_social : 'No disponible';
 					var color = gas.semaforo ? gas.semaforo : 'GRAY';
@@ -110,16 +113,29 @@ app.controller("homeController", function ($scope, $sails) {
 					});
 				});
 				$scope.markers = markers;
-				$scope.mapCenter = {
-					lng : markers[0].lng,
-					lat : markers[0].lat,
-					zoom : 7,
-				}
+				$scope.bounds = {
+					northEast : {
+                        lat : entidad.range.maxlat,
+                        lng : entidad.range.maxlng,
+                    },
+                    southWest : {
+                        lat : entidad.range.minlat,
+                        lng : entidad.range.minlng,
+                    },
+				}/*
+                $scope.mapCenter = {
+                    lng : markers[0].lng,
+                    lat : markers[0].lat,
+                    zoom : 7,
+                }*/
 			}
+
+            $scope.mapClass = '';
 		});
 	};
 
 	$scope.get_gasolineras();
+
 });
 function makeClusterIcon(cluster,color){
 	return new L.DivIcon({ 

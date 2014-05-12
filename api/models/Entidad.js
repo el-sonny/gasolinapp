@@ -9,6 +9,7 @@ module.exports = {
 
 	attributes: {
 		nombre : 'string',
+		range : 'json',
 	}
 };
 
