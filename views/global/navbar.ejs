@@ -1,9 +1,8 @@
-<div id='header' class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div id='header' class="navbar navbar-inverse navbar-fixed-top " role="navigation">
   <div class='toggle-sidebar'></div>
   <div class="navbar-header">
-    <a class="navbar-brand" href="/#!"><img class='logo' src='/images/gasolinaapp.png' /></a>
+    <a class="navbar-brand" href="/#!"><img class='logo' src='/images/gasolinapp.png' /></a>
   </div>
-  
   <form class="navbar-form navbar-right" role="form">
     <select ui-select2 ng-model="selectedEntidad" ng-change="get_gasolineras()" data-placeholder="Estados" class='entidadSelect'>
       <option value=""></option>
@@ -15,7 +14,9 @@
       <option ng-repeat='municipio in municipios' ng-value="municipio.nombre">{{municipio.nombre}}, {{municipio.entidad.nombre}}</option>
     </select>
 
-  </form><div class="clear"></div>
+  </form>
+  <p class="my-position"><a href=""><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="">Usar mi ubicación actual</a></p>
+  <div class="clear"></div>
   <%- partial('jumbotron') -%>
-  <div class="arrow-box"><div class="arrow-down"></div> </div>
+  <div class="arrow-box"><div class="arrow arrow-head closed "></div> </div>
 </div>

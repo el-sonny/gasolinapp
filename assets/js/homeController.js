@@ -149,8 +149,9 @@ $(".toggle-sidebar").click(function(e) {
  e.preventDefault();
  $(".sidebar").toggleClass("active");
 });
-$("#header .arrow-down").click(function(e) {
+$("#header .arrow").click(function(e) {
  e.preventDefault();
- $("#header .jumbotron").toggleClass("hidden");
+ $("#header .jumbotron-box").toggleClass("hidden");
+ $("#header .arrow").toggleClass("closed");
 });
 
