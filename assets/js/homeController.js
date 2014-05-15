@@ -144,3 +144,13 @@ function makeClusterIcon(cluster,color){
     	iconSize: L.point(40, 40)
     });
 }
+
+$(".toggle-sidebar").click(function(e) {
+ e.preventDefault();
+ $(".sidebar").toggleClass("active");
+});
+$("#header .arrow-down").click(function(e) {
+ e.preventDefault();
+ $("#header .jumbotron").toggleClass("hidden");
+});
+
