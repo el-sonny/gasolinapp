@@ -88,9 +88,9 @@ app.controller("homeController", function ($scope, $sails) {
     $scope.mapClass = '';
 	$scope.get_gasolineras = function(){
         $scope.mapClass = 'blur';
+        console.log($scope.selectedMunicipio);
 		$sails.get("/gasolinera",{estado:$scope.selectedEntidad,limit:10000})
 		.success(function (data) {
-
 			$scope.gasolineras = data;
 			if(data.length){
 				var markers = [];

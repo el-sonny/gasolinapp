@@ -1,6 +1,8 @@
 /*
 ogr2ogr -f GeoJSON -t_srs crs:84 ESPV10132DIC13A.geojson ESPV10132DIC13A.shp
 */
+var count = 0;
+var notFound = 0;
 module.exports = {
 	extractCiudades : function(){
 		require('async');
@@ -31,7 +33,7 @@ module.exports = {
 				num : feature.properties.ID,
 				descripcion : feature.properties.DESCRIPCIO,
 				estado : feature.properties.ESTADO,
-				municipio : feature.properties.MUNICIPIO,
+				municipio_nombre : feature.properties.MUNICIPIO,
 				localidad : feature.properties.LOCALIDAD,
 				colonia : feature.properties.COLONIA,
 				cp : feature.properties.CP,
@@ -44,11 +46,11 @@ module.exports = {
 			return 'Saved'+gases.length;	
 		});
 	},
-	ciudades : function(req,res){
+	ciudades : function(){
 		Gasolinera.find({}).limit(200000).exec(function(e,gases){
 			async.mapSeries(gases,mapGeo,function(e,gases){
 				if(e) throw(e);
-				res.json(gases);
+				console.log(gases.length);
 			});
 		});
 	},
@@ -98,7 +100,37 @@ module.exports = {
 				})
 			});
 		})
-	}
+	},
+	geocodeMunicipios : function(){
+		Gasolinera.find({}).exec(function(e,gases){
+			if(e) throw(e);
+			var municipios = [];
+			gases.forEach(function(gas){
+				if(municipios[gas.municipio]){
+					municipios[gas.municipio] = {
+						maxlat : municipios[gas.municipio].maxlat < gas.coordenadas[1] ? gas.coordenadas[1] : municipios[gas.municipio].maxlat,
+						maxlng : municipios[gas.municipio].maxlng < gas.coordenadas[0] ? gas.coordenadas[0] : municipios[gas.municipio].maxlng,
+						minlat : municipios[gas.municipio].minlat > gas.coordenadas[1] ? gas.coordenadas[1] : municipios[gas.municipio].minlat,
+						minlng : municipios[gas.municipio].minlng > gas.coordenadas[0] ? gas.coordenadas[0] : municipios[gas.municipio].minlng,
+					}					
+				}else{
+					municipios[gas.municipio] = {
+						maxlat : gas.coordenadas[1],
+						maxlng : gas.coordenadas[0],
+						minlat : gas.coordenadas[1],
+						minlng : gas.coordenadas[0],	
+					}					
+				}
+			});
+			console.log(municipios);
+			Municipio.find({}).exec(function(e,muns){
+				muns.forEach(function(municipio){
+					municipio.range = municipios[municipio.id];
+					municipio.save();
+				})
+			});
+		})
+	},
 
 };
 var geocodeString = function(string){
@@ -138,7 +170,7 @@ function mapGeo(gas,cb){
 	console.log('procesando: ',count++);
 	Entidad.findOrCreate({nombre:gas.estado},{nombre:gas.estado},function(e,ent){
 		if(e) return cb(e,ent);
-		var mun = {nombre:gas.municipio,entidad:ent.id};
+		var mun = {nombre:gas.municipio_nombre,entidad:ent.id};
 		Municipio.findOrCreate(mun,mun,function(e,mun){
 			if(e) return cb(e,mun);
 			gas.entidad = ent.id;

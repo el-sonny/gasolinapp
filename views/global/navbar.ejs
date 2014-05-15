@@ -1,6 +1,7 @@
 <div id='header' class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class='toggle-sidebar'></div>
   <div class="navbar-header">
-    <a class="navbar-brand" href="#">Gasolinapp</a>
+    <a class="navbar-brand" href="/#!"><img class='logo' src='/images/gasolinaapp.png' /></a>
   </div>
   
   <form class="navbar-form navbar-right" role="form">
@@ -8,5 +9,11 @@
       <option value=""></option>
       <option ng-repeat='entidad in entidades' ng-value="entidad.nombre">{{entidad.nombre}}</option>
     </select>
+
+    <select ui-select2 ng-model="selectedMunicipio" ng-change="get_gasolineras()" data-placeholder="Municipios" class='entidadSelect'>
+      <option value=""></option>
+      <option ng-repeat='municipio in municipios' ng-value="municipio.nombre">{{municipio.nombre}}, {{municipio.entidad.nombre}}</option>
+    </select>
+
   </form>
 </div>

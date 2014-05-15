@@ -12,6 +12,7 @@ module.exports = {
 			model : 'entidad',
 		},
 		nombre : 'string',
-	}
+	},
+	migrate : 'safe',
 };
 

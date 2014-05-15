@@ -9,24 +9,26 @@ module.exports = {
 	index : function(req,res){
 		var geoip = require('geoip-lite');
 		Entidad.find({}).sort('nombre').exec(function(e,entidades){
-			Municipio.find({}).sort('nombre').exec(function(e,municipios){
-				var ip = "189.149.52.115";
+			Municipio.find({}).populate('entidad').sort('nombre').exec(function(e,municipios){
+				var ip = "189.221.131.25";
 				var geo = geoip.lookup(ip);
+				//console.log(geo);
 				if(geo.ll){
-					console.log(geo.ll);
-					entidades.forEach(function(entidad){
+					municipios.forEach(function(municipio){
 						if(
-							entidad.range.maxlat > geo.ll[0] &&
-							geo.ll[0] > entidad.range.minlat &&
-							entidad.range.maxlng > geo.ll[1] &&
-							geo.ll[1] > entidad.range.minlng
+							municipio.range.maxlat > geo.ll[0] &&
+							geo.ll[0] > municipio.range.minlat &&
+							municipio.range.maxlng > geo.ll[1] &&
+							geo.ll[1] > municipio.range.minlng
 						){
-							console.log(entidad.nombre);
-							if(entidad.nombre != 'VICAM' && !selectedEntidad);
-								var selectedEntidad = entidad.nombre;
+							if(municipio.nombre){
+								console.log(municipio.id,'fffff');
+								var selectedMunicipio = municipio.id;
+							}
 						}
 
 					})
+					//console.log(selectedMunicipio);
 					if(!selectedEntidad) var selectedEntidad = 'Distrito Federal';	
 				}
 				res.view({municipios:municipios,entidades:entidades,geo:selectedEntidad});
