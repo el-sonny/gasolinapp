@@ -11,7 +11,7 @@
 
     <select ui-select2 ng-model="selectedMunicipio" ng-change="get_gasolineras()" data-placeholder="Municipios" class='entidadSelect'>
       <option value=""></option>
-      <option ng-repeat='municipio in municipios' ng-value="municipio.nombre">{{municipio.nombre}}, {{municipio.entidad.nombre}}</option>
+      <option ng-repeat='municipio in filteredMunicipios = (municipios | filter:munFilter())' ng-value="municipio.id">{{municipio.nombre}}, {{municipio.entidad.nombre}}</option>
     </select>
 
   </form>
@@ -20,3 +20,5 @@
   <%- partial('jumbotron') -%>
   <div class="arrow-box"><div class="arrow arrow-head closed "></div> </div>
 </div>
+
+<!-- rep in filteredReps = (representantes | filter:repFilter()) -->

@@ -4,8 +4,8 @@ app.controller("homeController", function ($scope, $sails) {
 	$scope.markers = [];
 	$scope.municipios = municipios;
 	$scope.entidades = entidades;
-	$scope.selectedEntidad = geo;
-    console.log(geo);
+	$scope.selectedEntidad = selectedEntidad;
+    $scope.selectedMunicipio = selectedMunicipio;
 
 	$scope.layers =  {
         baselayers: {
@@ -88,8 +88,7 @@ app.controller("homeController", function ($scope, $sails) {
     $scope.mapClass = '';
 	$scope.get_gasolineras = function(){
         $scope.mapClass = 'blur';
-        console.log($scope.selectedMunicipio);
-		$sails.get("/gasolinera",{estado:$scope.selectedEntidad,limit:10000})
+		$sails.get("/gasolinera",{estado:$scope.selectedEntidad,municipio:$scope.selectedMunicipio,limit:10000})
 		.success(function (data) {
 			$scope.gasolineras = data;
 			if(data.length){
@@ -113,14 +112,15 @@ app.controller("homeController", function ($scope, $sails) {
 					});
 				});
 				$scope.markers = markers;
+                var bounds_base = $scope.selectedMunicipio ? data[0].municipio : entidad;
 				$scope.bounds = {
 					northEast : {
-                        lat : entidad.range.maxlat,
-                        lng : entidad.range.maxlng,
+                        lat : bounds_base.range.maxlat,
+                        lng : bounds_base.range.maxlng,
                     },
                     southWest : {
-                        lat : entidad.range.minlat,
-                        lng : entidad.range.minlng,
+                        lat : bounds_base.range.minlat,
+                        lng : bounds_base.range.minlng,
                     },
 				}/*
                 $scope.mapCenter = {
@@ -135,6 +135,11 @@ app.controller("homeController", function ($scope, $sails) {
 	};
 
 	$scope.get_gasolineras();
+    $scope.munFilter = function(){
+        return function(m){
+            return !$scope.selectedEntidad || $scope.selectedEntidad == m.entidad.nombre
+        };
+    }
 
 });
 function makeClusterIcon(cluster,color){

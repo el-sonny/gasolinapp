@@ -12,6 +12,7 @@ module.exports = {
 			Municipio.find({}).populate('entidad').sort('nombre').exec(function(e,municipios){
 				var ip = "189.221.131.25";
 				var geo = geoip.lookup(ip);
+				var selectedMunicipio = false;
 				//console.log(geo);
 				if(geo.ll){
 					municipios.forEach(function(municipio){
@@ -22,16 +23,19 @@ module.exports = {
 							geo.ll[1] > municipio.range.minlng
 						){
 							if(municipio.nombre){
-								console.log(municipio.id,'fffff');
-								var selectedMunicipio = municipio.id;
+								selectedMunicipio = municipio.id;
+								selectedEntidad = municipio.entidad.nombre;
 							}
 						}
-
-					})
-					//console.log(selectedMunicipio);
-					if(!selectedEntidad) var selectedEntidad = 'Distrito Federal';	
+					});
+					//if(!selectedEntidad) var selectedEntidad = 'Distrito Federal';	
 				}
-				res.view({municipios:municipios,entidades:entidades,geo:selectedEntidad});
+				res.view({
+					municipios:municipios,
+					entidades:entidades,
+					selectedEntidad:selectedEntidad,
+					selectedMunicipio:selectedMunicipio,
+				});
 			});
 		});
 	},	
