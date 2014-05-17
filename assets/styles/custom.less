@@ -1,6 +1,7 @@
 html{height:100%;width:100%;}
 body{height:100%;width:100%;padding-top:67px;}
 .clear{clear: both};
+.animate-bg{transition: background-color .5s;}
 
 #header{background:#00AC5D url(../images/Imagen.png) no-repeat center -112px;/*background-size: cover;height:80px*/;border:none;padding:0;}
 #header .hidden{display: none;}
@@ -33,16 +34,19 @@ body{height:100%;width:100%;padding-top:67px;}
 #content .map-content{height:100%;position:relative;}
 #content .map-content .map{/*margin-left:63px;*/height:100%;width:100%;}
 #content .map-content .map.blur{opacity:.6;-webkit-filter:grayscale(.5) blur(3px); -moz-filter: blur(3px); -o-filter: blur(3px); -ms-filter:grayscale(0.5)  blur(3px); filter: blur(3px);}
-#content .map-content .sidebar{width:63px;background-color:black;height:100%;left: -63px;position:absolute;top:0;bottom:0;z-index: 9999}
+#content .map-content .sidebar{width:63px;background-color:#444444;height:100%;left: -63px;position:absolute;top:0;bottom:0;z-index: 9999}
 #content .map-content .sidebar.active{left: 0}
 #content .map-content .sidebar .gas-icons{padding: 0}
 #content .map-content .sidebar .gas-icons li{background: url(../images/Icono-Verde.png) no-repeat 7px center;height: 58px;position: relative;}
 #content .map-content .sidebar .gas-icons li + li{background: url(../images/Icono-Amarillo.png) no-repeat 5px center;}
 #content .map-content .sidebar .gas-icons li + li + li{background: url(../images/Icono-Rojo.png) no-repeat 5px center;}
 #content .map-content .sidebar .gas-icons li + li + li + li{background: url(../images/Icono-Gris.png) no-repeat -4px center;}
+#content .map-content .sidebar .gas-icons li:hover{background-color: #00ac5d;}
+#content .map-content .sidebar .gas-icons li + li:hover{background-color: #FFB500;}
+#content .map-content .sidebar .gas-icons li + li + li:hover{background-color: #FF2D1B;}
+#content .map-content .sidebar .gas-icons li + li + li + li:hover{background-color: #B1B1B1;}
 #content .map-content .sidebar .gas-icons li p{background-color: #4A4A4A;color: #BDBDBD;display: none;font-size: 13px;padding: 20px 5px;position: absolute;right: -254px;top: 0;width: 260px;z-index: 1}
 #content .map-content .sidebar .gas-icons li:before{content: '';background: #00ac5d;display: none;left: 0;height: 100%;position: absolute;top: 0;width: 3px}
-#content .map-content .sidebar .gas-icons li:hover{background-color: #4A4A4A;}
 #content .map-content .sidebar .gas-icons li:hover:before{display: block}
 #content .map-content .sidebar .gas-icons li:hover p{display: block;}
 

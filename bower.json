@@ -21,7 +21,8 @@
   ],
   "dependencies": {
     "angular-ui-select2": "~0.0.5",
-    "leaflet.markerclusterer": "~0.4.0"
+    "leaflet.markerclusterer": "~0.4.0",
+    "less-prefixer": "*"
   },
   "homepage": "https://github.com/el-sonny/gasolinapp",
   "private": true
