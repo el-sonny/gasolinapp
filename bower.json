@@ -30,7 +30,8 @@
      "bootstrap": "~3.1.1",
      "animate.css": "~3.1.1",
     "angular-ui-select2" :  "~0.0.5",
-    "leaflet.markerclusterer": "~0.4.0"
+    "leaflet.markerclusterer": "~0.4.0",
+    "less-prefixer": "*"
   },
   "homepage": "https://github.com/el-sonny/gasolinapp",
   "private": true
