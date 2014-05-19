@@ -86,10 +86,19 @@ app.controller("homeController", function ($scope, $sails) {
         zoomControlPosition: 'bottomleft',
     }
     $scope.mapClass = '';
-	$scope.get_gasolineras = function(){
+	$scope.get_gasolineras = function(chstate){
+        if(chstate){
+            $scope.selectedMunicipio = null;
+        }
         $scope.mapClass = 'blur';
-		$sails.get("/gasolinera",{estado:$scope.selectedEntidad,municipio:$scope.selectedMunicipio,limit:10000})
+        var params  = {estado:$scope.selectedEntidad,limit:100000};
+        if($scope.selectedMunicipio && $scope.selectedMunicipio != ""){
+            params.municipio = $scope.selectedMunicipio;
+        }
+        console.log(params);
+		$sails.get("/gasolinera",params)
 		.success(function (data) {
+            console.log(data);
 			$scope.gasolineras = data;
 			if(data.length){
 				var markers = [];
@@ -137,8 +146,8 @@ app.controller("homeController", function ($scope, $sails) {
 	$scope.get_gasolineras();
     $scope.munFilter = function(){
         return function(m){
-            return !$scope.selectedEntidad || $scope.selectedEntidad == m.entidad.nombre
-        };
+            return (!$scope.selectedEntidad || $scope.selectedEntidad == m.entidad.nombre) && m.nombre && m.entidad.nombre;
+        }
     }
 
 });

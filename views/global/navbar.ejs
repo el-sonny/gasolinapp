@@ -4,14 +4,19 @@
     <a class="navbar-brand" href="/#!"><img class='logo' src='/images/gasolinapp.png' /></a>
   </div>
   <form class="navbar-form navbar-right" role="form">
-    <select ui-select2 ng-model="selectedEntidad" ng-change="get_gasolineras()" data-placeholder="Estados" class='entidadSelect'>
+    <select ng-model="selectedEntidad" ng-change="get_gasolineras(true)" data-placeholder="Estados" class='entidadSelect'>
       <option value=""></option>
       <option ng-repeat='entidad in entidades' ng-value="entidad.nombre">{{entidad.nombre}}</option>
     </select>
 
-    <select ui-select2 ng-model="selectedMunicipio" ng-change="get_gasolineras()" data-placeholder="Municipios" class='entidadSelect'>
-      <option value=""></option>
-      <option ng-repeat='municipio in filteredMunicipios = (municipios | filter:munFilter())' ng-value="municipio.id">{{municipio.nombre}}, {{municipio.entidad.nombre}}</option>
+    <select 
+      ng-model="selectedMunicipio" 
+      ng-change="get_gasolineras()" 
+      data-placeholder="Municipios" 
+      class='entidadSelect' 
+      ng-options='m.id as m.nombre for m in filteredMunicipios = (municipios | filter:munFilter())'
+    >
+      <option value=''>Municipio</option>
     </select>
 
   </form>
