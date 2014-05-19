@@ -2,10 +2,18 @@ app.controller("homeController", function ($scope, $sails) {
 	$scope.mapCenter = {};
     $scope.bounds = {}
 	$scope.markers = [];
+    $scope.gasolineras = [];
 	$scope.municipios = municipios;
 	$scope.entidades = entidades;
 	$scope.selectedEntidad = selectedEntidad;
-    $scope.selectedMunicipio = selectedMunicipio;
+    $scope.selectedMunicipio = null;
+    $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
+    if(selectedMunicipio){
+        municipios.forEach(function(m){
+            if(m.id == selectedMunicipio)
+            $scope.selectedMunicipio = m;            
+        });
+    }
 
 	$scope.layers =  {
         baselayers: {
@@ -86,19 +94,22 @@ app.controller("homeController", function ($scope, $sails) {
         zoomControlPosition: 'bottomleft',
     }
     $scope.mapClass = '';
+
+    $scope.gasSummary = function(){
+        var location = $scope.selectedMunicipio ? $scope.selectedMunicipio.nombre+', '+$scope.selectedEntidad : $scope.selectedEntidad;
+        var text = $scope.gasolineras.length+' gasolineras en '+location;
+        return text;
+    }
 	$scope.get_gasolineras = function(chstate){
-        if(chstate){
-            $scope.selectedMunicipio = null;
-        }
+        if(chstate) $scope.selectedMunicipio = null;
         $scope.mapClass = 'blur';
         var params  = {estado:$scope.selectedEntidad,limit:100000};
         if($scope.selectedMunicipio && $scope.selectedMunicipio != ""){
-            params.municipio = $scope.selectedMunicipio;
+            params.municipio = $scope.selectedMunicipio.id;
         }
-        console.log(params);
+        $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
 		$sails.get("/gasolinera",params)
 		.success(function (data) {
-            console.log(data);
 			$scope.gasolineras = data;
 			if(data.length){
 				var markers = [];
@@ -119,6 +130,7 @@ app.controller("homeController", function ($scope, $sails) {
 						icon : $scope.icons[color],
 
 					});
+                    $scope.gasStats[color]++;
 				});
 				$scope.markers = markers;
                 var bounds_base = $scope.selectedMunicipio ? data[0].municipio : entidad;
