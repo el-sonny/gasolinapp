@@ -3,16 +3,18 @@ body{height:100%;width:100%;padding-top:67px;}
 .clear{clear: both};
 .animate-bg{transition: background-color .5s;}
 
-#header{background:#00AC5D url(../images/Imagen.png) no-repeat center -112px;background-size: cover;/*height:80px*/;border:none;padding:0;}
+#header{background: #00AC5D url(../images/Imagen.png) no-repeat center -112px;background-size: cover;/*height:80px*/;border:none;padding:0;}
 #header .hidden{display: none;}
 #header a{color:white;}
 #header a:hover{color:white;}
 #header .navbar-brand{padding:10px;}
+#header .navbar-header{float: left!important}
+
 #header .toggle-sidebar{cursor: pointer;width:65px;height:80px;background:#00AC5D url(../images/Gas.png) no-repeat center center;float:left;}
 #header .logo{width:136px;height:62px;}
 #header .my-position{margin-top:28px;float: right;}
 #header .my-position a{color: #fff}
-#header form{margin-top: 22px!important}
+#header form{border: 0;box-shadow: none;margin-top: 22px!important;float: right!important}
 #header .jumbotron-box{}
 #header .jumbotron-box .jumbotron{background: url(../images/Imagen.png) no-repeat center -192px;background-size: cover;border-top: 2px solid #fff;color: #fff;margin-bottom: 0;padding:20px 30px;text-align: center;}
 #header .jumbotron-box .jumbotron .logo-jumbotron{margin-bottom: 10px;margin-left: -25px}
@@ -24,7 +26,8 @@ body{height:100%;width:100%;padding-top:67px;}
 #content{position:absolute;top:80px;bottom:0;width:100%;padding-bottom:55px;}
 #content .gas-numbers{background: #414141;color: #C7C7C7;font-size: 13px;position: absolute;top: 40px;right: 0;z-index: 1}
 #content .gas-numbers .box{padding: 15px;position: relative;}
-#content .gas-numbers .box .arrow{background: #269052;height: 100%;left: -25px;position: absolute;top: 0;width: 25px}
+#content .gas-numbers .box .arrow{background: #269052 url(../images/pestana-right.png) no-repeat center;background-size: 30px 40px;height: 100%;left: -25px;position: absolute;top: 0;width: 25px}
+#content .gas-numbers .box .arrow a{display: block;height: 100%;width: 100%}
 #content .gas-numbers .box h4{color: #fff;font-size: 17px;font-weight: bold;margin: 0 0 10px 0}
 #content .gas-numbers .box ul{list-style: none;padding: 0;}
 #content .gas-numbers .box ul li{background: url(../images/Icono-Verde.png) 6px center no-repeat;background-size: 19px;margin-bottom: 6px;padding-left: 28px}
@@ -77,4 +80,31 @@ body{height:100%;width:100%;padding-top:67px;}
 
 footer{position:absolute;background-color:white;color: #818181;width:100%;height:45px;padding:4px 10px;bottom:0px;}
 footer a{color: #818181}
+footer .footer-logo{margin-top: -16px}
 footer .pull-right{margin-top: 6px}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}
+
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	#header .my-position a,#header form{font-size: 12px}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	#header .my-position a,#header form{font-size: 12px}
+	#header .my-position{margin-right: 20px}
+	#header form select{display: block;}
+	#header form select + select{margin-top: 6px}
+	#header .my-position{display: none;}
+	.sidebar{left: -65px}
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+	#header .toggle-sidebar{height: 92px}
+}
