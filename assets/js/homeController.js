@@ -110,7 +110,7 @@ app.controller("homeController", function ($scope, $sails) {
         $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
 		$sails.get("/gasolinera",params)
 		.success(function (data) {
-            console.log(data);
+            console.log(data,params);
 			$scope.gasolineras = data;
 			if(data.length){
 				var markers = [];
