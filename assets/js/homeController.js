@@ -14,6 +14,8 @@ app.controller("homeController", function ($scope, $sails) {
             $scope.selectedMunicipio = m;            
         });
     }
+    $scope.toggleJumbotron = false;
+    $scope.toggleGas = true;
 
 	$scope.layers =  {
         baselayers: {
@@ -171,18 +173,4 @@ function makeClusterIcon(cluster,color){
     });
 }
 
-$(".toggle-sidebar").click(function(e) {
- e.preventDefault();
- $(".sidebar").toggleClass("active");
-});
-$("#header .arrow").click(function(e) {
- e.preventDefault();
- $("#header .jumbotron-box").toggleClass("hidden");
- $("#header .arrow").toggleClass("closed");
-});
-
-$(".gas-numbers .arrow").click(function(e) {
- e.preventDefault();
- $(".gas-numbers ").toggleClass("active");
-});
 

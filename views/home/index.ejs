@@ -13,16 +13,19 @@
 			<li class="animate-bg"><p>Gasolineras no evaluadas por PROFECO</p></li>
 		</ul>
 	</div>
-	<div class="gas-numbers active">
-		<div class="box">
-			<div class="arrow"><a href="#"></a></div>
-			<h4 >{{gasSummary()}}</h4>
-			<ul>
-				<li class="pin-gray"><strong >{{gasStats.VERDE}}</strong> con semaforo verde</li>
-				<li class="pin-yellow"><strong>{{gasStats.AMARILLO}}</strong> con semaforo amarillo</li>
-				<li class="pin-red"><strong>{{gasStats.ROJO}}</strong> con semaforo rojo</li>
-				<li class="pin-gray"><strong>{{gasStats.GRAY}}</strong> no evaluadas por PROFECO</li>
-			</ul>			
+	<div class="gas-numbers">
+		<div class="gas-numbers-container">
+			<div class="arrow"><a href="#" ng-click="toggleGas = !toggleGas"></a></div>
+
+			<div class="box" ng-show="toggleGas">
+				<h4 >{{gasSummary()}}</h4>
+				<ul>
+					<li class="pin-gray"><strong >{{gasStats.VERDE}}</strong> con semaforo verde</li>
+					<li class="pin-yellow"><strong>{{gasStats.AMARILLO}}</strong> con semaforo amarillo</li>
+					<li class="pin-red"><strong>{{gasStats.ROJO}}</strong> con semaforo rojo</li>
+					<li class="pin-gray"><strong>{{gasStats.GRAY}}</strong> no evaluadas por PROFECO</li>
+				</ul>			
+			</div>
 		</div>
 	</div>
 	<leaflet bounds='bounds' center='mapCenter' ng-class='mapClass' class='map' layers="layers" markers='markers' defaults='options' ></leaflet>
