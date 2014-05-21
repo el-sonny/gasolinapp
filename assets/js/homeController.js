@@ -181,3 +181,8 @@ $("#header .arrow").click(function(e) {
  $("#header .arrow").toggleClass("closed");
 });
 
+$(".gas-numbers .arrow").click(function(e) {
+ e.preventDefault();
+ $(".gas-numbers ").toggleClass("active");
+});
+
