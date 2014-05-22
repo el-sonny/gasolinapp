@@ -5,7 +5,8 @@ app.controller("homeController", function ($scope, $sails , $location) {
     $scope.gasolineras = [];
 	$scope.municipios = municipios;
 	$scope.entidades = entidades;
-	$scope.selectedEntidad = selectedEntidad;
+	console.log($location.path().split("/")[1]);
+    //$scope.selectedEntidad = selectedEntidad;
     $scope.selectedMunicipio = null;
     $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
     if(selectedMunicipio){
@@ -25,11 +26,16 @@ app.controller("homeController", function ($scope, $sails , $location) {
     //Escuchando todo y regresando el path en la url
     //Asignandole a selectedEntidad el path en la url
     $scope.$watch(function() {
-      $scope.locationCustom = $location.path().split("/")[1];
       return $location.path();
     }, function(path) {
-      $scope.selectedEntidad = path.split("/")[1];
-      $scope.get_gasolineras(true);
+      var p = path || null;
+      if(p){
+        $scope.selectedEntidad = path.split("/")[1];
+        $scope.get_gasolineras(true);
+      }
+      else{
+        $scope.selectedEntidad = selectedEntidad;
+      }
     });
 
 	$scope.layers =  {
