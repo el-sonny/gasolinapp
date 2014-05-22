@@ -3,8 +3,7 @@ body{height:100%;width:100%;padding-top:67px;}
 .clear{clear: both};
 .animate-bg{transition: background-color .5s;}
 
-#header{background: #00AC5D url(../images/Imagen.png) no-repeat center -112px;background-size: cover;/*height:80px*/;border:none;padding:0;}
-#header .hidden{display: none;}
+#header{background: #00AC5D url(../images/Imagen.png) no-repeat center -112px;/*height:80px*/;border:none;padding:0;}
 #header a{color:white;}
 #header a:hover{color:white;}
 #header .navbar-brand{padding:10px;}
@@ -16,7 +15,7 @@ body{height:100%;width:100%;padding-top:67px;}
 #header .my-position a{color: #fff}
 #header form{border: 0;box-shadow: none;margin-top: 22px!important;float: right!important}
 #header .jumbotron-box{}
-#header .jumbotron-box .jumbotron{background: url(../images/Imagen.png) no-repeat center -192px;background-size: cover;border-top: 2px solid #fff;color: #fff;margin-bottom: 0;padding:20px 30px;text-align: center;}
+#header .jumbotron-box .jumbotron{background: url(../images/Imagen.png) no-repeat center -192px;border-top: 2px solid #fff;color: #fff;margin-bottom: 0;padding:20px 30px;text-align: center;}
 #header .jumbotron-box .jumbotron .logo-jumbotron{margin-bottom: 10px;margin-left: -25px}
 #header .jumbotron-box .jumbotron p{font-size: 18px}
 #header .arrow-box{bottom: 0;height: 20px;position: absolute;width: 100%;}
@@ -24,22 +23,24 @@ body{height:100%;width:100%;padding-top:67px;}
 #header .arrow-box .arrow.closed{background: #4A4A4A url(../images/pestanaverde-up.png) no-repeat center}
 
 #content{position:absolute;top:80px;bottom:0;width:100%;padding-bottom:55px;}
-#content .gas-numbers{background: #414141;color: #C7C7C7;font-size: 13px;position: absolute;top: 40px;right: -100%;z-index: 1}
-#content .gas-numbers.active{right: 0}
-#content .gas-numbers .box{padding: 15px;position: relative;}
-#content .gas-numbers .box .arrow{background: #269052 url(../images/pestana-right.png) no-repeat center;background-size: 30px 40px;height: 100%;left: -25px;position: absolute;top: 0;width: 25px}
-#content .gas-numbers .box .arrow a{display: block;height: 100%;width: 100%}
-#content .gas-numbers .box h4{color: #fff;font-size: 17px;font-weight: bold;margin: 0 0 10px 0}
-#content .gas-numbers .box ul{list-style: none;padding: 0;}
-#content .gas-numbers .box ul li{background: url(../images/Icono-Verde.png) 6px center no-repeat;background-size: 19px;margin-bottom: 6px;padding-left: 28px}
-#content .gas-numbers .box ul li + li{background: url(../images/Icono-Amarillo.png) 6px center no-repeat;background-size: 19px;}
-#content .gas-numbers .box ul li + li +li{background: url(../images/Icono-Rojo.png) 6px center no-repeat;background-size: 19px;}
-#content .gas-numbers .box ul li + li +li +li{background: url(../images/Icono-Gris.png) 3px center no-repeat;background-size: 24px;}
+
+#content .gas-numbers{background: #414141;color: #C7C7C7;font-size: 13px;position: absolute;top: 40px;right: 0;z-index: 1}
+#content .gas-numbers .gas-numbers-container{position: relative;}
+#content .gas-numbers .gas-numbers-container .arrow{background: #269052 url(../images/pestana-right.png) no-repeat center;background-size: 30px 40px;height: 100%;left: -25px;min-height: 125px;position: absolute;top: 0;width: 25px}
+#content .gas-numbers .gas-numbers-container .arrow a{display: block;height: 100%;width: 100%}
+#content .gas-numbers .gas-numbers-container .box{padding: 15px;position: relative;}
+#content .gas-numbers .gas-numbers-container .box h4{color: #fff;font-size: 17px;font-weight: bold;margin: 0 0 10px 0}
+#content .gas-numbers .gas-numbers-container .box ul{list-style: none;padding: 0;}
+#content .gas-numbers .gas-numbers-container .box ul li{background: url(../images/Icono-Verde.png) 6px center no-repeat;background-size: 19px;margin-bottom: 6px;padding-left: 28px}
+#content .gas-numbers .gas-numbers-container .box ul li + li{background: url(../images/Icono-Amarillo.png) 6px center no-repeat;background-size: 19px;}
+#content .gas-numbers .gas-numbers-container .box ul li + li +li{background: url(../images/Icono-Rojo.png) 6px center no-repeat;background-size: 19px;}
+#content .gas-numbers .gas-numbers-container .box ul li + li +li +li{background: url(../images/Icono-Gris.png) 3px center no-repeat;background-size: 24px;}
+
+
 #content .map-content{height:100%;position:relative;}
 #content .map-content .map{/*margin-left:63px;*/height:100%;width:100%;}
 #content .map-content .map.blur{opacity:.6;-webkit-filter:grayscale(.5) blur(3px); -moz-filter: blur(3px); -o-filter: blur(3px); -ms-filter:grayscale(0.5)  blur(3px); filter: blur(3px);}
-#content .map-content .sidebar{width:65px;background-color:#444444;height:100%;left: -65px;position:absolute;top:0;bottom:0;z-index: 9999}
-#content .map-content .sidebar.active{left: 0}
+#content .map-content .sidebar{width:65px;background-color:#444444;height:100%;left: 0;position:absolute;top:0;bottom:0;z-index: 9999}
 #content .map-content .sidebar .gas-icons{padding: 0}
 #content .map-content .sidebar .gas-icons li{background: url(../images/Icono-Verde.png) no-repeat 7px center;height: 58px;position: relative;}
 #content .map-content .sidebar .gas-icons li + li{background: url(../images/Icono-Amarillo.png) no-repeat 5px center;}
@@ -86,7 +87,7 @@ footer .pull-right{margin-top: 6px}
 
 /* Large desktop */
 @media (min-width: 1200px) {
-
+	#header, #header .jumbotron-box .jumbotron{background-size: cover}
 }
 
 
@@ -102,7 +103,7 @@ footer .pull-right{margin-top: 6px}
 	#header form select{display: block;}
 	#header form select + select{margin-top: 6px}
 	#header .my-position{display: none;}
-	.sidebar{left: -65px}
+	/*.sidebar{left: -65px}*/
 }
  
 /* Landscape phones and down */
