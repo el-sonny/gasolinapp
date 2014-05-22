@@ -14,19 +14,20 @@ body{height:100%;width:100%;padding-top:67px;}
 #header .my-position{margin-top:28px;float: right;}
 #header .my-position a{color: #fff}
 #header form{border: 0;box-shadow: none;margin-top: 22px!important;float: right!important}
-#header .jumbotron-box{}
+#header .jumbotron-box{position: absolute;width: 100%}
 #header .jumbotron-box .jumbotron{background: url(../images/Imagen.png) no-repeat center -192px;border-top: 2px solid #fff;color: #fff;margin-bottom: 0;padding:20px 30px;text-align: center;}
 #header .jumbotron-box .jumbotron .logo-jumbotron{margin-bottom: 10px;margin-left: -25px}
 #header .jumbotron-box .jumbotron p{font-size: 18px}
-#header .arrow-box{bottom: 0;height: 20px;position: absolute;width: 100%;}
-#header .arrow-box .arrow{background: #4A4A4A url(../images/pestanaverde.png) no-repeat center;bottom: 0;cursor: pointer;height: 20px;margin: 0 auto;width: 36px;-webkit-transform:rotate(180deg);}
-#header .arrow-box .arrow.closed{background: #4A4A4A url(../images/pestanaverde-up.png) no-repeat center}
+#header .arrow-box{bottom: 0;height: 20px;left: 0;position: absolute;width: 100%;}
+#header .arrow-box .arrow{background: #4A4A4A url(../images/pestanaverde.png) no-repeat center;bottom: 0;cursor: pointer;height: 20px;margin: 0 auto;width: 36px;}
+#header .jumbotron .arrow-box{}
+#header .jumbotron .arrow-box .arrow{background: #4A4A4A url(../images/pestanaverde-up.png) no-repeat center;}
 
 #content{position:absolute;top:80px;bottom:0;width:100%;padding-bottom:55px;}
 
-#content .gas-numbers{background: #414141;color: #C7C7C7;font-size: 13px;position: absolute;top: 40px;right: 0;z-index: 1}
+#content .gas-numbers{background: #414141;color: #C7C7C7;font-size: 13px;height: 158px;position: absolute;top: 40px;right: 0;z-index: 1}
 #content .gas-numbers .gas-numbers-container{position: relative;}
-#content .gas-numbers .gas-numbers-container .arrow{background: #269052 url(../images/pestana-right.png) no-repeat center;background-size: 30px 40px;height: 100%;left: -25px;min-height: 125px;position: absolute;top: 0;width: 25px}
+#content .gas-numbers .gas-numbers-container .arrow{background: #269052 url(../images/pestana-right.png) no-repeat center;background-size: 30px 40px;height: 100%;left: -25px;min-height: 158px;position: absolute;top: 0;width: 25px}
 #content .gas-numbers .gas-numbers-container .arrow a{display: block;height: 100%;width: 100%}
 #content .gas-numbers .gas-numbers-container .box{padding: 15px;position: relative;}
 #content .gas-numbers .gas-numbers-container .box h4{color: #fff;font-size: 17px;font-weight: bold;margin: 0 0 10px 0}

@@ -17,7 +17,7 @@
 		<div class="gas-numbers-container">
 			<div class="arrow"><a href="#" ng-click="toggleGasBox = !toggleGasBox"></a></div>
 
-			<div class="box" ng-show="toggleGasBox">
+			<div class="box animated" ng-show="toggleGasBox" ng-class="{'fadeInLeft' : togglGasBox}">
 				<h4 >{{gasSummary()}}</h4>
 				<ul>
 					<li class="pin-gray"><strong >{{gasStats.VERDE}}</strong> con semaforo verde</li>

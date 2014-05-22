@@ -17,6 +17,7 @@ app.controller("homeController", function ($scope, $sails , $location) {
     }
     $scope.toggleJumbotron = false;
     $scope.toggleGasBox = true;
+    $scope.toggleSidebar = true;
 
     //Hash from url
     //Escuchando a a selectedEntidad y asignando su valor al path de la url
@@ -31,10 +32,12 @@ app.controller("homeController", function ($scope, $sails , $location) {
       var p = path || null;
       if(p){
         $scope.selectedEntidad = path.split("/")[1];
-        $scope.get_gasolineras(true);
+        //$scope.get_gasolineras(true);
       }
       else{
         $scope.selectedEntidad = selectedEntidad;
+        //$scope.get_gasolineras(true);
+
       }
     });
 
