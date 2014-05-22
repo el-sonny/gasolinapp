@@ -15,16 +15,16 @@
 	</div>
 	<div class="gas-numbers">
 		<div class="gas-numbers-container">
-			<div class="arrow"><a href="#" ng-click="toggleGas = !toggleGas"></a></div>
+			<div class="arrow"><a href="#" ng-click="toggleGasBox = !toggleGasBox"></a></div>
 
-			<div class="box" ng-show="toggleGas">
+			<div class="box" ng-show="toggleGasBox">
 				<h4 >{{gasSummary()}}</h4>
 				<ul>
 					<li class="pin-gray"><strong >{{gasStats.VERDE}}</strong> con semaforo verde</li>
 					<li class="pin-yellow"><strong>{{gasStats.AMARILLO}}</strong> con semaforo amarillo</li>
 					<li class="pin-red"><strong>{{gasStats.ROJO}}</strong> con semaforo rojo</li>
 					<li class="pin-gray"><strong>{{gasStats.GRAY}}</strong> no evaluadas por PROFECO</li>
-				</ul>			
+				</ul>
 			</div>
 		</div>
 	</div>

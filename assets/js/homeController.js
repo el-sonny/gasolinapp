@@ -1,4 +1,4 @@
-app.controller("homeController", function ($scope, $sails) {
+app.controller("homeController", function ($scope, $sails , $location) {
 	$scope.mapCenter = {};
     $scope.bounds = {}
 	$scope.markers = [];
@@ -15,7 +15,22 @@ app.controller("homeController", function ($scope, $sails) {
         });
     }
     $scope.toggleJumbotron = false;
-    $scope.toggleGas = true;
+    $scope.toggleGasBox = true;
+
+    //Hash from url
+    //Escuchando a a selectedEntidad y asignando su valor al path de la url
+    $scope.$watch('selectedEntidad', function(path) {
+      $location.path(path);
+    });
+    //Escuchando todo y regresando el path en la url
+    //Asignandole a selectedEntidad el path en la url
+    $scope.$watch(function() {
+      $scope.locationCustom = $location.path().split("/")[1];
+      return $location.path();
+    }, function(path) {
+      $scope.selectedEntidad = path.split("/")[1];
+      $scope.get_gasolineras(true);
+    });
 
 	$scope.layers =  {
         baselayers: {
