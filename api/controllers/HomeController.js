@@ -39,4 +39,7 @@ module.exports = {
 			});
 		});
 	},	
+	whatever : function(req,res){
+		res.json(true);
+	}
 };
