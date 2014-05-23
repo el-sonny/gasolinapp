@@ -1,4 +1,4 @@
-<div class="jumbotron-box " ng-show="toggleJumbotron">
+<div class="jumbotron-box animated fadInDown" ng-show="toggleJumbotron" ng-class="{'fadeInDown' : toggleJumbotron , 'fadeOutUp' : !toggleJumbotron}">
 	<div class="jumbotron">
 	  <div class="container">
 	    <img src="/images/gasolinapp.png" alt="Gasolinapp" class="logo-jumbotron">
@@ -6,5 +6,6 @@
 	    <p>Las gasolineras en Mexico nos roban todos los dias. El gobierno no hace nada, es hora de que los ciudadanos tomemos el control!</p>
 	    <img src="/images/app.png" alt="app">
 	  </div>
+  	<div class="arrow-box"><div ng-show="toggleJumbotron" class="arrow arrow-head" ng-click="toggleJumbotron = !toggleJumbotron"></div> </div>	  
 	</div>
 </div>
