@@ -5,7 +5,7 @@
 	    window.selectedEntidad = <%- JSON.stringify(selectedEntidad) %>;
 	    window.selectedMunicipio = <%- JSON.stringify(selectedMunicipio) %>;
 	</script>
-	<div class='sidebar active'>
+	<div class='sidebar' ng-show="toggleSidebar"  ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
 		<ul class="gas-icons">
 			<li class="animate-bg"><p>Gasolineras no evaluadas por PROFECO</p></li>
 			<li class="animate-bg"><p>Gasolineras no evaluadas por PROFECO</p></li>

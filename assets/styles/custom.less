@@ -14,6 +14,7 @@ body{height:100%;width:100%;padding-top:67px;}
 #header .my-position{margin-top:28px;float: right;}
 #header .my-position a{color: #fff}
 #header form{border: 0;box-shadow: none;margin-top: 22px!important;float: right!important}
+#header form select{width: 140px}
 #header .jumbotron-box{position: absolute;width: 100%}
 #header .jumbotron-box .jumbotron{background: url(../images/Imagen.png) no-repeat center -192px;border-top: 2px solid #fff;color: #fff;margin-bottom: 0;padding:20px 30px;text-align: center;}
 #header .jumbotron-box .jumbotron .logo-jumbotron{margin-bottom: 10px;margin-left: -25px}
@@ -58,6 +59,23 @@ body{height:100%;width:100%;padding-top:67px;}
 
 .capitalize{text-transform: lowercase;}
 
+.animate-enter,.animate-leave{
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
+.animate-enter {
+	-webkit-transition: 1s linear all; /* Chrome */
+	transition: 1s linear all;
+	opacity: 0;
+}
+ 
+.animate-enter.animate-enter-active {
+	opacity: 1;
+}
 
 
 #header .select2-container{width:173px;height:30px;padding:5px 10px}
@@ -87,7 +105,7 @@ footer .footer-logo{margin-top: -16px}
 footer .pull-right{margin-top: 6px}
 
 /* Large desktop */
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
 	#header, #header .jumbotron-box .jumbotron{background-size: cover}
 }
 
@@ -104,6 +122,7 @@ footer .pull-right{margin-top: 6px}
 	#header form select{display: block;}
 	#header form select + select{margin-top: 6px}
 	#header .my-position{display: none;}
+	#header .jumbotron-box .jumbotron p{font-size: 14px}
 	/*.sidebar{left: -65px}*/
 }
  

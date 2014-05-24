@@ -32,7 +32,7 @@ app.controller("homeController", function ($scope, $sails , $location) {
       var p = path || null;
       if(p){
         $scope.selectedEntidad = path.split("/")[1];
-        //$scope.get_gasolineras(true);
+        $scope.get_gasolineras(true);
       }
       else{
         $scope.selectedEntidad = selectedEntidad;
