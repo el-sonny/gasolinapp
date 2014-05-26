@@ -188,6 +188,26 @@ app.controller("homeController", function ($scope, $sails , $location) {
         }
     }
 
+
+    //Hide y show de sidebar (pseudo media-queries)
+    var screenSize = $(window).width();
+    if(screenSize < 767){
+        $scope.toggleSidebar = false;
+        $scope.toggleGasBox = false;            
+    }
+    $( window ).resize(function() {
+        console.log(screenSize);
+        if(screenSize < 767){
+            $scope.toggleSidebar = false;
+            $scope.toggleGasBox = false;            
+        }
+        else{
+            $scope.toggleSidebar = true;
+            $scope.toggleGasBox = true;                        
+        }
+
+    });
+
 });
 function makeClusterIcon(cluster,color){
 	return new L.DivIcon({ 

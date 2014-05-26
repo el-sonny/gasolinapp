@@ -44,6 +44,9 @@ var jsFilesToInject = [
 	'bower_components/leaflet.markerclusterer/dist/leaflet.markercluster.js',
 	'bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js',
 	'bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js',
+	'bower_components/angular-animate/angular-animate.js',
+	//'bower_components/ngAnimate-animate.css/animate.js',
+
 
 
 	// All of the rest of your client-side js files
