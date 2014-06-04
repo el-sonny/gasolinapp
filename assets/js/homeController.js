@@ -196,14 +196,14 @@ app.controller("homeController", function ($scope, $sails , $location) {
         $scope.toggleGasBox = false;            
     }
     $( window ).resize(function() {
-        console.log(screenSize);
+        screenSize = $(window).width();
         if(screenSize < 767){
             $scope.toggleSidebar = false;
-            $scope.toggleGasBox = false;            
+            $scope.toggleGasBox = false; 
         }
         else{
             $scope.toggleSidebar = true;
-            $scope.toggleGasBox = true;                        
+            $scope.toggleGasBox = true;
         }
 
     });
