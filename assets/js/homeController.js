@@ -32,7 +32,7 @@ app.controller("homeController", function ($scope, $sails , $location) {
       var p = path || null;
       if(p){
         $scope.selectedEntidad = path.split("/")[1];
-        //$scope.get_gasolineras(true);
+        $scope.get_gasolineras(true);
       }
       else{
         $scope.selectedEntidad = selectedEntidad;
@@ -188,6 +188,26 @@ app.controller("homeController", function ($scope, $sails , $location) {
             return (!$scope.selectedEntidad || $scope.selectedEntidad == m.entidad.nombre) && m.nombre && m.entidad.nombre;
         }
     }
+
+
+    //Hide y show de sidebar (pseudo media-queries)
+    var screenSize = $(window).width();
+    if(screenSize < 767){
+        $scope.toggleSidebar = false;
+        $scope.toggleGasBox = false;            
+    }
+    $( window ).resize(function() {
+        screenSize = $(window).width();
+        if(screenSize < 767){
+            $scope.toggleSidebar = false;
+            $scope.toggleGasBox = false; 
+        }
+        else{
+            $scope.toggleSidebar = true;
+            $scope.toggleGasBox = true;
+        }
+
+    });
 
 });
 function makeClusterIcon(cluster,color){

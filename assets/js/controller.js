@@ -1,4 +1,4 @@
-var app = angular.module("gasolinapp", ['ngSails','ui.select2','leaflet-directive']);
+var app = angular.module("gasolinapp", ['ngSails','ngAnimate','ui.select2','leaflet-directive']);
 app.config(['$locationProvider', function($location) {
   $location.hashPrefix('!');
 }]);
