@@ -13,10 +13,12 @@ body{height:100%;width:100%;padding-top:67px;}
 #header .logo{width:136px;height:62px;}
 
 #header .my-position{margin-top:28px;float: right;}
+#header .my-position.mobile{display: none;margin:0;float: none;}
 #header .my-position a{color: #fff}
 #header form{border: 0;box-shadow: none;margin-top: 30px!important;float: right!important}
-#header form select{background: none;border: 2px solid #fff;color: #fff;width: 140px}
+#header form select{background: none;border: 1px solid #fff;color: #fff;width: 140px}
 #header form select option{color: #000}
+#header form select .clear.mobile{display: none;}
 #header .jumbotron-box{position: absolute;width: 100%}
 
 
@@ -126,10 +128,13 @@ footer .pull-right{margin-top: 6px}
 @media (max-width: 767px) {
 	#header .my-position a,#header form{font-size: 12px}
 	#header .my-position{margin-right: 20px}
-	#header form{margin-top: 0!important}
-	#header form select{display: block;margin-right: 10px}
-	#header form select + select{margin-top: 6px}
-	#header .my-position{display: none;}
+	#header form{margin: 0 10px!important;padding: 10px 0}
+	#header form select{display: block;margin-right: 10px;float: right;width: 182px}
+	#header form .clear +  select{margin-top: 6px}
+	#header form select .clear.mobile{display: block;}
+	#header .my-position.desktop{display: none;}
+	#header .my-position.mobile{display: block;}
+	#header .my-position.mobile img{width: 26px}
 	#header .jumbotron-box .jumbotron p{font-size: 14px}
 	/*.sidebar{left: -65px}*/
 }
@@ -141,4 +146,7 @@ footer .pull-right{margin-top: 6px}
 	#header form select{margin-right: 10px;width: 100px;}
 	#header .arrow-box{bottom: -20px}
 	#header .jumbotron .arrow-box{bottom: 0}
+}
+@media (max-width: 340px){
+	#header .navbar-brand .logo{height: auto;width: 110px;}
 }

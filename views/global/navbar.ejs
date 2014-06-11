@@ -8,7 +8,7 @@
       <option value=""></option>
       <option ng-repeat='entidad in entidades' ng-value="entidad.nombre">{{entidad.nombre}}</option>
     </select>
-
+    <div class="clear mobile"></div>
     <select 
       ng-model="selectedMunicipio" 
       ng-change="get_gasolineras()" 
@@ -18,9 +18,10 @@
     >
       <option value=''>Municipio</option>
     </select>
-
+    <div class="clear mobile"></div>
+    <p class="my-position mobile"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
   </form>
-  <p class="my-position"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
+  <p class="my-position desktop"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
   <div class="clear"></div>
   <%- partial('jumbotron') -%>
   <div class="arrow-box"><div ng-show="!toggleJumbotron" class="arrow arrow-head" ng-click="toggleJumbotron = !toggleJumbotron"></div> </div>
