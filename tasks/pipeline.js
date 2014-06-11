@@ -45,6 +45,7 @@ var jsFilesToInject = [
 	'bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js',
 	'bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js',
 	'bower_components/angular-animate/angular-animate.js',
+	'bower_components/angularjs-geolocation/src/geolocation.js',
 	//'bower_components/ngAnimate-animate.css/animate.js',
 
 

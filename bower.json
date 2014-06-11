@@ -33,7 +33,8 @@
     "leaflet.markerclusterer": "~0.4.0",
     "less-prefixer": "*",
     "angular-animate": "~1.2.16",
-    "ngAnimate-animate.css": "~0.1.1"
+    "ngAnimate-animate.css": "~0.1.1",
+    "angularjs-geolocation": "git://github.com/arunisrael/angularjs-geolocation.git#~0.1.1"
   },
   "homepage": "https://github.com/el-sonny/gasolinapp",
   "private": true
