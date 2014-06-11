@@ -13,7 +13,7 @@
       ng-model="selectedMunicipio" 
       ng-change="get_gasolineras()" 
       data-placeholder="Municipios" 
-      class='entidadSelect' 
+      class='entidadSelect selectpicker' 
       ng-options='m as m.nombre for m in filteredMunicipios = (municipios | filter:munFilter())'
     >
       <option value=''>Municipio</option>
