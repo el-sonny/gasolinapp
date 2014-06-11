@@ -7,15 +7,15 @@
 	</script>
 	<div class='sidebar' ng-show="toggleSidebar">
 		<ul class="gas-icons">
-			<li class="animate-bg"><p>Gasolineras no evaluadas por PROFECO</p></li>
-			<li class="animate-bg"><p>Gasolineras no evaluadas por PROFECO</p></li>
-			<li class="animate-bg"><p>Gasolineras no evaluadas por PROFECO</p></li>
+			<li class="animate-bg"><p>Gasolineras con semaforo verde</p></li>
+			<li class="animate-bg"><p>Gasolineras con semaforo amarillo</p></li>
+			<li class="animate-bg"><p>Gasolineras con semaforo rojo</p></li>
 			<li class="animate-bg"><p>Gasolineras no evaluadas por PROFECO</p></li>
 		</ul>
 	</div>
 	<div class="gas-numbers">
 		<div class="gas-numbers-container">
-			<div class="arrow"><a href="#" ng-click="toggleGasBox = !toggleGasBox"></a></div>
+			<div class="arrow" ng-class="{right: toggleGasBox, left: !toggleGasBox}"><a href="#" ng-click="toggleGasBox = !toggleGasBox"></a></div>
 
 			<div class="box animated" ng-show="toggleGasBox">
 				<h4 >{{gasSummary()}}</h4>

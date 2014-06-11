@@ -1,4 +1,5 @@
-app.controller("homeController", function ($scope, $sails , $location) {
+app.controller("homeController", function ($scope, $sails , $location, geolocation) {
+    
 	$scope.mapCenter = {};
     $scope.bounds = {}
 	$scope.markers = [];
@@ -120,6 +121,12 @@ app.controller("homeController", function ($scope, $sails , $location) {
         zoomControlPosition: 'bottomleft',
     }
     $scope.mapClass = '';
+
+    $scope.getGeoLocalization = function(){
+        geolocation.getLocation().then(function(data){
+          $scope.coords = {lat:data.coords.latitude, long:data.coords.longitude};
+        });
+    }
 
     $scope.gasSummary = function(){
         var location = $scope.selectedMunicipio ? $scope.selectedMunicipio.nombre+', '+$scope.selectedEntidad : $scope.selectedEntidad;
