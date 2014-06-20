@@ -165,7 +165,7 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
             $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
             var munlytics = $scope.selectedMunicipio && $scope.selectedMunicipio.nombre ? $scope.selectedMunicipio.nombre : 'entidad completa';
             var entidadlics = $scope.selectedEntidad && $scope.selectedEntidad.nombre ? $scope.selectedEntidad.nombre : 'Todo Mexico';
-            ga('send', 'event', 'button', $scope.selectedEntidad.nombre,munlytics);
+            ga('send', 'event', 'button', entidadlics,munlytics);
 			$scope.gasolineras = data.gasolineras;
             var bounds_base = data.range;
 			if(data.gasolineras.length){
