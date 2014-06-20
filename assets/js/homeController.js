@@ -46,7 +46,6 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
       else{
         $scope.selectedEntidad = selectedEntidad;
         //$scope.get_gasolineras(true);
-
       }
     });*/
 
@@ -227,6 +226,7 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         }
 
     });
+
 
 });
 function makeClusterIcon(cluster,color){

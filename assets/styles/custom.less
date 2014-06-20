@@ -1,6 +1,6 @@
 html{height:100%;width:100%;}
 body{height:100%;width:100%;padding-top:67px;}
-.clear{clear: both};
+.clear{clear: both}
 .animate-bg{transition: background-color .5s;}
 
 #header{background: #00AC5D url(../images/Imagen.png) no-repeat center -112px;border:none;padding:0;height:69px;}
@@ -12,12 +12,14 @@ body{height:100%;width:100%;padding-top:67px;}
 #header .toggle-sidebar{cursor: pointer;width:65px;height:69px;background:#00AC5D url(../images/Gas.png) no-repeat center center;float:left;}
 #header .logo{width:136px;height:62px;}
 
-#header .my-position{margin-top:24px;float: right;}
+#header .my-position{margin-top:28px;float: right;}
+#header .my-position.mobile{display: none;margin:0;float: none;}
 #header .my-position a{color: #fff}
 #header form{border: 0;box-shadow: none;margin-top:20px!important;float: right!important}
 #header form .styled-select {width: 165px;height:34px;overflow:hidden;background: url(../images/pestanablanca.png) no-repeat right transparent;border:1px solid white;float:left;margin:0 0 0 4px;}
 #header form .styled-select select{border:none;width:180px;background:transparent;padding:5px 24px 5px 5px;line-height: 1;border-radius:0;height:34px;webkit-appearance:none;color:white;}
 #header form .styled-select option{color:black;}
+#header  .clear.mobile{display: none;}
 #header .jumbotron-box{position: absolute;width: 100%}
 
 
@@ -127,10 +129,13 @@ footer .pull-right{margin-top: 6px}
 @media (max-width: 767px) {
 	#header .my-position a,#header form{font-size: 12px}
 	#header .my-position{margin-right: 20px}
-	#header form{margin-top: 0!important}
-	#header form select{display: block;margin-right: 10px}
-	#header form select + select{margin-top: 6px}
-	#header .my-position{display: none;}
+	#header form{margin: 0 10px!important;padding: 10px 0}
+	#header form select{display: block;margin-right: 10px;float: right;width: 182px}
+	#header form .clear +  select{margin-top: 6px}
+	#header form select +  .clear.mobile{display: block;}
+	#header .my-position.desktop{display: none;}
+	#header .my-position.mobile{display: block;}
+	#header .my-position.mobile img{width: 26px}
 	#header .jumbotron-box .jumbotron p{font-size: 14px}
 	/*.sidebar{left: -65px}*/
 }
@@ -139,7 +144,10 @@ footer .pull-right{margin-top: 6px}
 @media (max-width: 480px) {
 	#header .toggle-sidebar{height: 92px}
 	#header .navbar-brand{width: 40px}
-	#header form select{margin-right: 10px;width: 100px;}
+	#header form select{margin-right: 10px;width: 100px!important;}
 	#header .arrow-box{bottom: -20px}
 	#header .jumbotron .arrow-box{bottom: 0}
+}
+@media (max-width: 340px){
+	#header .navbar-brand .logo{height: auto;width: 110px;}
 }

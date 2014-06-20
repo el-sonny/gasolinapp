@@ -16,13 +16,13 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
 	'bower_components/bootstrap/dist/css/bootstrap.min.css',
-	'bower_components/select2/select2.css',
 	'bower_components/leaflet-dist/leaflet.css',
 	'bower_components/leaflet.markerclusterer/dist/MarkerCluster.Default.css',
 	'bower_components/leaflet.markerclusterer/dist/MarkerCluster.css',
 	'bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css',
 	'bower_components/animate.css/animate.min.css',
 	'bower_components/less-prefixer/prefixer.less',
+
 	'styles/**/*.css'
 ];
 
@@ -35,11 +35,9 @@ var jsFilesToInject = [
 	// are brought in here
 	'js/dependencies/**/*.js',
 	'bower_components/jquery/dist/jquery.min.js',
-	'bower_components/select2/select2.js',
 	'bower_components/bootstrap/dist/js/bootstrap.min.js',
 	'bower_components/angular/angular.min.js',
 	'bower_components/angular-sails/dist/angular-sails.min.js',
-	'bower_components/angular-ui-select2/src/select2.js',
 	'bower_components/leaflet-dist/leaflet.js',
 	'bower_components/leaflet.markerclusterer/dist/leaflet.markercluster.js',
 	'bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js',
