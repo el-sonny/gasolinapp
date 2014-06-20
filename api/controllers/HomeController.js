@@ -22,10 +22,13 @@ function getData(req,cb){
 	Entidad.find({}).sort('nombre').exec(function(e,entidades){
 		Municipio.find({}).populate('entidad').sort('nombre').exec(function(e,municipios){
 			var ip = req.connection.remoteAddress;
-			ip = ip == '127.0.0.1' ? "189.221.131.25" : '';
+			console.log(ip);
+			ip = req.ip;
+			console.log(ip);
+			//ip = ip == '127.0.0.1' ? "189.221.131.25" : '';
 			var geo = geoip.lookup(ip);
 			var selectedMunicipio = false;
-			var selectedEntidad = entidades[0];
+			var selectedEntidad = entidades[8];
 			//console.log(geo);
 			if(geo && geo.ll){
 				municipios.forEach(function(municipio){

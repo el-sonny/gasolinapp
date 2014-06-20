@@ -6,19 +6,13 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
     $scope.gasolineras = [];
 	$scope.municipios = municipios;
 	$scope.entidades = entidades;
-    $scope.selectedEntidad = selectedEntidad;
+    //$scope.selectedEntidad = selectedEntidad;
     $scope.selectedMunicipio = selectedMunicipio;
     $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
     $scope.toggleJumbotron = false;
     $scope.toggleGasBox = true;
     $scope.toggleSidebar = true;
-    if(selectedEntidad){
-        for(x in entidades){
-            if(entidades[x].id == selectedEntidad.id){
-                $scope.selectedEntidad = entidades[x];
-            }
-        }
-    }   
+    
     if(selectedMunicipio){
         for(x in municipios){
             if(municipios[x].id == selectedMunicipio.id){
@@ -26,8 +20,6 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
             }
         }
     }
-    //if()
-
     //Hash from url
     //Escuchando a a selectedEntidad y asignando su valor al path de la url
     $scope.$watch('selectedEntidad', function(path) {
@@ -35,26 +27,36 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
     });
     //Escuchando todo y regresando el path en la url
     //Asignandole a selectedEntidad el path en la url
-    /*$scope.$watch(function() {
+    $scope.$watch(function() {
       return $location.path();
     }, function(path) {
-      var p = path || null;
-      if(p){
-        $scope.selectedEntidad = path.split("/")[1];
+      if(path || null){
+        var estado = path.split("/")[1];
+        for(x in entidades){
+            if(entidades[x].nombre == estado) $scope.selectedEntidad = entidades[x];
+        }
+        $scope.get_gasolineras(true);
+      }else{
+        if(selectedEntidad){
+            for(x in entidades){
+                if(entidades[x].id == selectedEntidad.id){
+                    $scope.selectedEntidad = entidades[x];
+                }
+            }
+        }  
         $scope.get_gasolineras(true);
       }
-      else{
-        $scope.selectedEntidad = selectedEntidad;
-        //$scope.get_gasolineras(true);
-      }
-    });*/
+    });
 
 	$scope.layers =  {
         baselayers: {
             xyz: {
                 name: 'OpenStreetMap (XYZ)',
                 url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                type: 'xyz'
+                type: 'xyz',
+                layerOptions: {
+                    attribution: '<a href="http://spaceshiplabs.com">Spaceshiplabs.com</a> | <a href="http://gasolinapp.com">Gasolinapp.com</a>'
+                }
             }
         },
         overlays: {
@@ -124,8 +126,8 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         },
     }  
 	$scope.options = {
-        attributionControl : false, 
-        zoomControlPosition: 'bottomleft',
+        attributionControl : true, 
+        zoomControlPosition: 'bottomright',
     }
     $scope.mapClass = '';
 
@@ -151,10 +153,12 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         if($scope.selectedMunicipio && $scope.selectedMunicipio != ""){
             params.municipio = $scope.selectedMunicipio.id;
         }
-        $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
+        
 		$sails.get("/gasolinera",params)
 		.success(function (data) {
-            console.log(data);
+            $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
+            var munlytics = $scope.selectedMunicipio && $scope.selectedMunicipio.nombre ? $scope.selectedMunicipio.nombre : 'entidad completa';
+            ga('send', 'event', 'button', $scope.selectedEntidad.nombre,munlytics);
 			$scope.gasolineras = data.gasolineras;
             var bounds_base = data.range;
 			if(data.gasolineras.length){
@@ -200,7 +204,6 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
 		});
 	};
 
-	$scope.get_gasolineras();
     $scope.munFilter = function(){
         return function(m){
             return (!$scope.selectedEntidad || $scope.selectedEntidad.id == m.entidad.id) && m.nombre && m.entidad.nombre;
