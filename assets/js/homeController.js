@@ -132,6 +132,7 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         attributionControl : true, 
         zoomControlPosition: 'bottomright',
     }
+    $scope.options.scrollWheelZoom = isScrollable;
     $scope.mapClass = '';
 
     $scope.change_filter = function(clearmun){
