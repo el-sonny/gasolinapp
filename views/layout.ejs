@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="/bower_components/leaflet.markerclusterer/dist/MarkerCluster.css">
     <link rel="stylesheet" href="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
     <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="/bower_components/less-prefixer/prefixer.less">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/widget.css">
     <!--STYLES END-->
 
   </head>
@@ -34,10 +36,15 @@
         <%- body -%>
     
         <footer>
-            <p class="pull-right">Fuentes: <a href="#">PEMEX</a> <a href='#'>PROFECO</a></p>
+            <p class="pull-right">
+                Fuentes:  
+                <a target="_blank" href='http://www.profeco.gob.mx/transparencia/transfocaliza/transfocaliza.asp'>PROFECO</a> 
+                <a target="_blank" href="http://datamx.io/dataset/gasolineras-en-mexico-formato-geojson/resource/94267a98-be48-49b3-91f0-6d7d4b9970e1">Tu Gobierno en Mapas (difunto)</a> 
+            </p>
             <p>
                 <a href='http://spaceshiplabs.com'><img class="footer-logo" src="/images/logospaceshiphome.png" width="136" alt="Spaceshiplabs"></a> &middot; 
                 <a href="https://github.com/el-sonny/gasolinapp">Github</a>
+                <a href="https://github.com/el-sonny/gasolinapp">Widget</a>
             </p>            
         </footer>
     
@@ -55,6 +62,7 @@
     <script src="/bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
     <script src="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angularjs-geolocation/src/geolocation.js"></script>
     <script src="/js/controller.js"></script>
     <script src="/js/homeController.js"></script>
     <!--SCRIPTS END-->

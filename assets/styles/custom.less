@@ -3,19 +3,21 @@ body{height:100%;width:100%;padding-top:67px;}
 .clear{clear: both};
 .animate-bg{transition: background-color .5s;}
 
-#header{background: #00AC5D url(../images/Imagen.png) no-repeat center -112px;/*height:80px*/;border:none;padding:0;}
+#header{background: #00AC5D url(../images/Imagen.png) no-repeat center -112px;border:none;padding:0;height:69px;}
 #header a{color:white;}
 #header a:hover{color:white;}
-#header .navbar-brand{padding:10px;}
+#header .navbar-brand{padding:4px 10px;}
 #header .navbar-header{float: left!important}
 
-#header .toggle-sidebar{cursor: pointer;width:65px;height:80px;background:#00AC5D url(../images/Gas.png) no-repeat center center;float:left;}
+#header .toggle-sidebar{cursor: pointer;width:65px;height:69px;background:#00AC5D url(../images/Gas.png) no-repeat center center;float:left;}
 #header .logo{width:136px;height:62px;}
 
-#header .my-position{margin-top:28px;float: right;}
+#header .my-position{margin-top:24px;float: right;}
 #header .my-position a{color: #fff}
-#header form{border: 0;box-shadow: none;margin-top: 30px!important;float: right!important}
-#header form select{width: 140px}
+#header form{border: 0;box-shadow: none;margin-top:20px!important;float: right!important}
+#header form .styled-select {width: 165px;height:34px;overflow:hidden;background: url(../images/pestanablanca.png) no-repeat right transparent;border:1px solid white;float:left;margin:0 0 0 4px;}
+#header form .styled-select select{border:none;width:180px;background:transparent;padding:5px 24px 5px 5px;line-height: 1;border-radius:0;height:34px;webkit-appearance:none;color:white;}
+#header form .styled-select option{color:black;}
 #header .jumbotron-box{position: absolute;width: 100%}
 
 
@@ -38,11 +40,11 @@ body{height:100%;width:100%;padding-top:67px;}
 #header .jumbotron .arrow-box{}
 #header .jumbotron .arrow-box .arrow{background: #4A4A4A url(../images/pestanaverde-up.png) no-repeat center;}
 
-#content{position:absolute;top:80px;bottom:0;width:100%;padding-bottom:55px;}
+#content{position:absolute;top:69px;bottom:0;width:100%;padding-bottom:55px;}
 
-#content .gas-numbers{background: #414141;color: #C7C7C7;font-size: 13px;height: 158px;position: absolute;top: 40px;right: 0;z-index: 1}
+#content .gas-numbers{background: #414141;color: #C7C7C7;font-size: 13px;height: 158px;position: absolute;top: 40px;right: 0;z-index: 1;max-width:420px;height:158px;}
 #content .gas-numbers .gas-numbers-container{position: relative;}
-#content .gas-numbers .gas-numbers-container .arrow{background: #269052 url(../images/pestana-left.png) no-repeat center;background-size: 30px 40px;height: 100%;left: -25px;min-height: 158px;position: absolute;top: 0;width: 25px}
+#content .gas-numbers .gas-numbers-container .arrow{background: #269052 url(../images/pestana-left.png) no-repeat center;background-size: 30px 40px;height:158px;left: -25px;position: absolute;top: 0;width: 25px}
 #content .gas-numbers .gas-numbers-container .arrow.right{background: #269052 url(../images/pestana-right.png) no-repeat center;background-size: 30px 40px;}
 #content .gas-numbers .gas-numbers-container .arrow a{display: block;height: 100%;width: 100%}
 #content .gas-numbers .gas-numbers-container .box{padding: 15px;position: relative;}

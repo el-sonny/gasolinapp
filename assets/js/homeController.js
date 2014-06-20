@@ -6,28 +6,36 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
     $scope.gasolineras = [];
 	$scope.municipios = municipios;
 	$scope.entidades = entidades;
-	console.log($location.path().split("/")[1]);
-    //$scope.selectedEntidad = selectedEntidad;
-    $scope.selectedMunicipio = null;
+    $scope.selectedEntidad = selectedEntidad;
+    $scope.selectedMunicipio = selectedMunicipio;
     $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
-    if(selectedMunicipio){
-        municipios.forEach(function(m){
-            if(m.id == selectedMunicipio)
-            $scope.selectedMunicipio = m;            
-        });
-    }
     $scope.toggleJumbotron = false;
     $scope.toggleGasBox = true;
     $scope.toggleSidebar = true;
+    if(selectedEntidad){
+        for(x in entidades){
+            if(entidades[x].id == selectedEntidad.id){
+                $scope.selectedEntidad = entidades[x];
+            }
+        }
+    }   
+    if(selectedMunicipio){
+        for(x in municipios){
+            if(municipios[x].id == selectedMunicipio.id){
+                $scope.selectedMunicipio = municipios[x];
+            }
+        }
+    }
+    //if()
 
     //Hash from url
     //Escuchando a a selectedEntidad y asignando su valor al path de la url
     $scope.$watch('selectedEntidad', function(path) {
-      $location.path(path);
+        if(path) $location.path(path.nombre);
     });
     //Escuchando todo y regresando el path en la url
     //Asignandole a selectedEntidad el path en la url
-    $scope.$watch(function() {
+    /*$scope.$watch(function() {
       return $location.path();
     }, function(path) {
       var p = path || null;
@@ -40,7 +48,7 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         //$scope.get_gasolineras(true);
 
       }
-    });
+    });*/
 
 	$scope.layers =  {
         baselayers: {
@@ -129,29 +137,33 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
     }
 
     $scope.gasSummary = function(){
-        var location = $scope.selectedMunicipio ? $scope.selectedMunicipio.nombre+', '+$scope.selectedEntidad : $scope.selectedEntidad;
+        var location = $scope.selectedMunicipio ? $scope.selectedMunicipio.nombre.capitalize()+', '+$scope.selectedEntidad.nombre : 
+        $scope.selectedEntidad ? $scope.selectedEntidad.nombre : "México";
         var text = $scope.gasolineras.length+' gasolineras en '+location;
         return text;
     }
 	$scope.get_gasolineras = function(chstate){
         if(chstate) $scope.selectedMunicipio = null;
         $scope.mapClass = 'blur';
-        var params  = {estado:$scope.selectedEntidad,limit:100000};
+        var params = {};
+        if($scope.selectedEntidad && $scope.selectedEntidad != ""){
+            params.entidad = $scope.selectedEntidad.id;
+        }
         if($scope.selectedMunicipio && $scope.selectedMunicipio != ""){
             params.municipio = $scope.selectedMunicipio.id;
         }
         $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
 		$sails.get("/gasolinera",params)
 		.success(function (data) {
-            console.log(data,params);
-			$scope.gasolineras = data;
-			if(data.length){
+            console.log(data);
+			$scope.gasolineras = data.gasolineras;
+            var bounds_base = data.range;
+			if(data.gasolineras.length){
 				var markers = [];
-                var entidad = data[0].entidad;
-				data.forEach(function(gas){
+				data.gasolineras.forEach(function(gas){
 					var razon = gas.razon_social ? gas.razon_social : 'No disponible';
 					var color = gas.semaforo ? gas.semaforo : 'GRAY';
-					var semaforo = gas.semaforo ? gas.semaforo : 'No evaluado';
+					var semaforo = gas.semaforo ? gas.semaforo : 'No disponible';
 					var message = '<b>Estacion:</b> '+gas.num+'<br/> ';
 					message += '<b>Direccion:</b> '+gas.calle+'<br/>';
 					message += '<b>Razon Social:</b> '+razon+'<br/>';
@@ -167,15 +179,15 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
                     $scope.gasStats[color]++;
 				});
 				$scope.markers = markers;
-                var bounds_base = $scope.selectedMunicipio ? data[0].municipio : entidad;
+               
 				$scope.bounds = {
 					northEast : {
-                        lat : bounds_base.range.maxlat,
-                        lng : bounds_base.range.maxlng,
+                        lat : bounds_base.maxlat,
+                        lng : bounds_base.maxlng,
                     },
                     southWest : {
-                        lat : bounds_base.range.minlat,
-                        lng : bounds_base.range.minlng,
+                        lat : bounds_base.minlat,
+                        lng : bounds_base.minlng,
                     },
 				}/*
                 $scope.mapCenter = {
@@ -192,7 +204,7 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
 	$scope.get_gasolineras();
     $scope.munFilter = function(){
         return function(m){
-            return (!$scope.selectedEntidad || $scope.selectedEntidad == m.entidad.nombre) && m.nombre && m.entidad.nombre;
+            return (!$scope.selectedEntidad || $scope.selectedEntidad.id == m.entidad.id) && m.nombre && m.entidad.nombre;
         }
     }
 
@@ -226,3 +238,6 @@ function makeClusterIcon(cluster,color){
 }
 
 
+String.prototype.capitalize = function() {
+    return this.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+};

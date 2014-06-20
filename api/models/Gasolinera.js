@@ -13,11 +13,21 @@ module.exports = {
   	},
   	municipio:{
   		model : 'municipio',
+      index : true,
   	},
   	estado:{
   		type: 'string',
   		index : true
-  	}
+  	},
+    coordenadas : 'json',
+    num : 'string',
+    descripcion : 'string',
+    semaforo : 'string',
+    calle : 'string',
+    cp : 'string',
+    colonia : 'string',
+    localidad : 'string',
+    razon_social : 'string',
   },
   migrate : 'safe'
 };

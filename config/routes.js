@@ -30,9 +30,9 @@ module.exports.routes = {
     controller: 'home',
     action : 'index'
   },
-  '/whatever': {
+  '/widget': {
     controller: 'home',
-    action : 'whatever'
+    action : 'widget'
   },
 
 

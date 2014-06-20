@@ -1,0 +1,19 @@
+body{padding:0;}
+#header{background: transparent;}
+#header .toggle-sidebar{display:none;}
+#header .navbar-header{display:none;}
+#header .arrow-box{display:none;}
+
+#content{top:0;padding:0;}
+#content .sidebar{display:none;}
+#content .gas-numbers{left:0;right:auto;}
+#content .gas-numbers .gas-numbers-container .arrow{right:-25px;left:auto;}
+
+#content .gas-numbers .gas-numbers-container .arrow.left{background: #269052 url(../images/pestana-right.png) no-repeat center;background-size: 30px 40px;}
+#content .gas-numbers .gas-numbers-container .arrow.right{background: #269052 url(../images/pestana-left.png) no-repeat center;background-size: 30px 40px;}
+
+#header form .styled-select {width: 165px;height:34px;overflow:hidden;background: url(../images/pestanablanca.png) no-repeat right #414141;border:1px solid white;float:left;margin:0 0 0 4px;}
+#header form .styled-select select{border:none;width:180px;background:transparent;padding:5px 24px 5px 5px;line-height: 1;border-radius:0;height:34px;webkit-appearance:none;color:white;}
+#header .my-position{display:none;}
+
+footer{display:none;}

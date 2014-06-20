@@ -4,21 +4,28 @@
     <a class="navbar-brand" href="/#!"><img class='logo' src='/images/gasolinapp.png' /></a>
   </div>
   <form class="navbar-form navbar-right" role="form">
-    <select ng-model="selectedEntidad" ng-change="get_gasolineras(true)" data-placeholder="Estados" class='entidadSelect'>
-      <option value=""></option>
-      <option ng-repeat='entidad in entidades' ng-value="entidad.nombre">{{entidad.nombre}}</option>
-    </select>
-
-    <select 
-      ng-model="selectedMunicipio" 
-      ng-change="get_gasolineras()" 
-      data-placeholder="Municipios" 
-      class='entidadSelect' 
-      ng-options='m as m.nombre for m in filteredMunicipios = (municipios | filter:munFilter())'
-    >
-      <option value=''>Municipio</option>
-    </select>
-
+    <div class='styled-select'>
+      <select 
+        ng-model="selectedEntidad" 
+        ng-change="get_gasolineras(true)"
+        data-placeholder="Estados" 
+        class='entidadSelect'
+        ng-options='e.nombre for e in entidades'
+      >
+        <option value="">Entidad</option>
+      </select>
+    </div>
+    <div class='styled-select'>
+      <select 
+        ng-model="selectedMunicipio" 
+        ng-change="get_gasolineras()" 
+        data-placeholder="Municipios" 
+        class='entidadSelect' 
+        ng-options='m.nombre for m in filteredMunicipios = (municipios | filter:munFilter())'
+      >
+        <option value=''>Municipio</option>
+      </select>
+    </div>
   </form>
   <p class="my-position"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
   <div class="clear"></div>
