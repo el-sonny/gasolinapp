@@ -12,6 +12,7 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
     $scope.toggleJumbotron = false;
     $scope.toggleGasBox = true;
     $scope.toggleSidebar = true;
+    var firstload = true;
     
     if(selectedMunicipio){
         for(x in municipios){
@@ -35,16 +36,18 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         for(x in entidades){
             if(entidades[x].nombre == estado) $scope.selectedEntidad = entidades[x];
         }
-        $scope.get_gasolineras(true);
+        if(firstload) $scope.selectedMunicipio = null;        
+        $scope.get_gasolineras();
+        firstload = false;
       }else{
+        firstload = false;
         if(selectedEntidad){
             for(x in entidades){
                 if(entidades[x].id == selectedEntidad.id){
                     $scope.selectedEntidad = entidades[x];
                 }
             }
-        }  
-        $scope.get_gasolineras(true);
+        }
       }
     });
 
@@ -131,6 +134,11 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
     }
     $scope.mapClass = '';
 
+    $scope.change_filter = function(clearmun){
+        if(clearmun) $scope.selectedMunicipio = null;
+        $scope.get_gasolineras();
+    }
+
     $scope.getGeoLocalization = function(){
         geolocation.getLocation().then(function(data){
           $scope.coords = {lat:data.coords.latitude, long:data.coords.longitude};
@@ -143,8 +151,7 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         var text = $scope.gasolineras.length+' gasolineras en '+location;
         return text;
     }
-	$scope.get_gasolineras = function(chstate){
-        if(chstate) $scope.selectedMunicipio = null;
+	$scope.get_gasolineras = function(){
         $scope.mapClass = 'blur';
         var params = {};
         if($scope.selectedEntidad && $scope.selectedEntidad != ""){
@@ -153,7 +160,6 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         if($scope.selectedMunicipio && $scope.selectedMunicipio != ""){
             params.municipio = $scope.selectedMunicipio.id;
         }
-        
 		$sails.get("/gasolinera",params)
 		.success(function (data) {
             $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};

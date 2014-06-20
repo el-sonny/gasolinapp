@@ -19,6 +19,6 @@ module.exports = {
       		via: "municipio"
 		}
 	},
-	//migrate : 'safe',
+	migrate : 'safe',
 };
 

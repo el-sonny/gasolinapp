@@ -14,6 +14,8 @@ module.exports = {
 			collection: "gasolinera",
       		via: "entidad"
 		},
-	}
+	},
+	migrate : 'safe',
+
 };
 

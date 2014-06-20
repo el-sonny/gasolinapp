@@ -7,7 +7,7 @@
     <div class='styled-select'>
       <select 
         ng-model="selectedEntidad" 
-        ng-change="get_gasolineras(true)"
+        ng-change="change_filter(true)"
         data-placeholder="Estados" 
         class='entidadSelect'
         ng-options='e.nombre for e in entidades'
@@ -20,7 +20,7 @@
     <div class='styled-select'>
       <select 
         ng-model="selectedMunicipio" 
-        ng-change="get_gasolineras()" 
+        ng-change="change_filter(false)" 
         data-placeholder="Municipios" 
         class='entidadSelect' 
         ng-options='m.nombre for m in filteredMunicipios = (municipios | filter:munFilter())'
