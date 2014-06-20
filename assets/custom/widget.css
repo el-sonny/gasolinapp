@@ -3,10 +3,12 @@ body{padding:0;}
 #header .toggle-sidebar{display:none;}
 #header .navbar-header{display:none;}
 #header .arrow-box{display:none;}
+#header .my-position.widget{display: block;}
+#header .my-position.mobile , #header .my-position.desktop{display: none;}
 
 #content{top:0;padding:0;}
 #content .sidebar{display:none;}
-#content .gas-numbers{left:0;right:auto;}
+#content .gas-numbers{left:0;right:auto;top: 130px}
 #content .gas-numbers .gas-numbers-container .arrow{right:-25px;left:auto;}
 
 #content .gas-numbers .gas-numbers-container .arrow.left{background: #269052 url(../images/pestana-right.png) no-repeat center;background-size: 30px 40px;}
