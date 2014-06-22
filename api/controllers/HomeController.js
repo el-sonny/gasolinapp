@@ -23,7 +23,6 @@ function getData(req,cb){
 		Municipio.find({}).populate('entidad').sort('nombre').exec(function(e,municipios){
 			if(e) throw(e);
 			var ip = req.ip;
-
 			ip = ip == '127.0.0.1' ? "189.221.131.25" : '';
 			var geo = geoip.lookup(ip);
 			var selectedMunicipio = false;
