@@ -3,7 +3,10 @@
   <div class="navbar-header">
     <a class="navbar-brand" href="/#!"><img class='logo' src='/images/gasolinapp.png' /></a>
   </div>
+
   <form class="navbar-form navbar-right" role="form">
+    <p class="my-position widget"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
+    <div class="clear"></div>
     <div class='styled-select'>
       <select 
         ng-model="selectedEntidad" 
@@ -16,7 +19,6 @@
       </select>
     </div>
 
-    <div class="clear mobile"></div>
     <div class='styled-select'>
       <select 
         ng-model="selectedMunicipio" 
@@ -28,7 +30,7 @@
         <option value=''>Municipio</option>
       </select>
     </div>
-    <div class="clear mobile"></div>
+    <div class="clear"></div>
     <p class="my-position mobile"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
   </form>
   <p class="my-position desktop"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>

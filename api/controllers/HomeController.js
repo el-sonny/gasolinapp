@@ -8,11 +8,13 @@
 module.exports = {
 	index : function(req,res){
 		var data = getData(req,function(data){
+			data.isScrollable = true;
 			res.view(data);	
 		});		
 	},	
 	widget : function(req,res){
 		var data = getData(req,function(data){
+			data.isScrollable = false;
 			res.view(data);	
 		});		
 	}

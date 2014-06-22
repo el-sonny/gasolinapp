@@ -6,14 +6,15 @@ body{height:100%;width:100%;padding-top:67px;}
 #header{background: #00AC5D url(../images/Imagen.png) no-repeat center -112px;border:none;padding:0;height:69px;}
 #header a{color:white;}
 #header a:hover{color:white;}
-#header .navbar-brand{padding:4px 10px;}
+#header .navbar-brand{padding:4px 10px;width: 40px}
 #header .navbar-header{float: left!important}
 
 #header .toggle-sidebar{cursor: pointer;width:65px;height:69px;background:#00AC5D url(../images/Gas.png) no-repeat center center;float:left;}
 #header .logo{width:136px;height:62px;}
 
 #header .my-position{margin-top:28px;float: right;}
-#header .my-position.mobile{display: none;margin:0;float: none;}
+#header .my-position.widget{display: none;text-align: right;}
+#header .my-position.mobile{display: none;margin:0;float: none;text-align: right;}
 #header .my-position a{color: #fff}
 #header form{border: 0;box-shadow: none;margin-top:20px!important;float: right!important}
 #header form .styled-select {width: 165px;height:34px;overflow:hidden;background: url(../images/pestanablanca.png) no-repeat right transparent;border:1px solid white;float:left;margin:0 0 0 4px;}
@@ -129,25 +130,31 @@ footer .pull-right{margin-top: 6px}
 @media (max-width: 767px) {
 	#header .my-position a,#header form{font-size: 12px}
 	#header .my-position{margin-right: 20px}
-	#header form{margin: 0 10px!important;padding: 10px 0}
-	#header form select{display: block;margin-right: 10px;float: right;width: 182px}
-	#header form .clear +  select{margin-top: 6px}
-	#header form select +  .clear.mobile{display: block;}
+	#header form{margin: 0 10px 0 0!important;padding: 10px 0 0;width: 64%}
+	#header form .styled-select{width: 48%!important}
+	#header form select{width: 120%!important}
 	#header .my-position.desktop{display: none;}
 	#header .my-position.mobile{display: block;}
 	#header .my-position.mobile img{width: 26px}
 	#header .jumbotron-box .jumbotron p{font-size: 14px}
-	/*.sidebar{left: -65px}*/
+	#content .gas-numbers{max-width: 85%}
 }
- 
+
+@media (max-width: 605px) {
+	#header .navbar-brand{width: 120px}
+	#header form{width: 56%}
+	#header .navbar-brand img{height: auto;width: 100%;}
+
+} 
+
 /* Landscape phones and down */
 @media (max-width: 480px) {
-	#header .toggle-sidebar{height: 92px}
-	#header .navbar-brand{width: 40px}
-	#header form select{margin-right: 10px;width: 100px!important;}
+	#header .navbar-brand{display: none;}
+	/*#header{height: 120px}*/
+	#header form{width: 75%}
+	/*#header .toggle-sidebar{height: 120px}*/
 	#header .arrow-box{bottom: -20px}
 	#header .jumbotron .arrow-box{bottom: 0}
-}
-@media (max-width: 340px){
-	#header .navbar-brand .logo{height: auto;width: 110px;}
+	/*#content .map-content .sidebar{top: 50px}
+	#content .gas-numbers{top: 106px}*/
 }
