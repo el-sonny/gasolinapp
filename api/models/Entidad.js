@@ -10,6 +10,12 @@ module.exports = {
 	attributes: {
 		nombre : 'string',
 		range : 'json',
-	}
+		gasolineras : {
+			collection: "gasolinera",
+      		via: "entidad"
+		},
+	},
+	migrate : 'safe',
+
 };
 

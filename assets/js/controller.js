@@ -1,5 +1,7 @@
-var app = angular.module("gasolinapp", ['ngSails','ui.select2','leaflet-directive']);
-
+var app = angular.module("gasolinapp", ['ngSails','ngAnimate','leaflet-directive','geolocation']);
+app.config(['$locationProvider', function($location) {
+  $location.hashPrefix('!');
+}]);
 
 /*//OPTIONAL! Set socket URL!
 app.config(['$sailsProvider', function ($sailsProvider) {

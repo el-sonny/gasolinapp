@@ -30,6 +30,10 @@ module.exports.routes = {
     controller: 'home',
     action : 'index'
   },
+  '/widget': {
+    controller: 'home',
+    action : 'widget'
+  },
 
 
   // Custom routes here...

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 , maximum-scale=1.0, user-scalable=no">
     <meta name="author" content="spaceshiplabs.com">
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="description" content="">
@@ -18,11 +18,11 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/select2/select2.css">
     <link rel="stylesheet" href="/bower_components/leaflet-dist/leaflet.css">
     <link rel="stylesheet" href="/bower_components/leaflet.markerclusterer/dist/MarkerCluster.Default.css">
     <link rel="stylesheet" href="/bower_components/leaflet.markerclusterer/dist/MarkerCluster.css">
     <link rel="stylesheet" href="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
 
@@ -33,26 +33,32 @@
         <%- body -%>
     
         <footer>
-            <p class="pull-right">Fuentes: <a href="#">PEMEX</a> <a href='#'>PROFECO</a></p>
+            <p class="pull-right">
+                Fuentes:  
+                <a target="_blank" href='http://www.profeco.gob.mx/transparencia/transfocaliza/transfocaliza.asp'>PROFECO</a> 
+                <a target="_blank" href="http://datamx.io/dataset/gasolineras-en-mexico-formato-geojson/resource/94267a98-be48-49b3-91f0-6d7d4b9970e1">Tu Gobierno en Mapas</a> (<a target="_blank" href='http://cidge.gob.mx/menu/servicios/herramientas-de-gobierno-digital/tu-gobierno-en-mapas-como-implementar-mapas-en-tu-gobierno-en-mapas/'>difunto</a>)
+            </p>
             <p>
-                <a href='http://spaceshiplabs.com'><img src="/images/Spaceshiplabs.png" alt="Spaceshiplabs"></a> &middot; 
-                <a href="https://github.com/el-sonny/gasolinapp">Github</a>
+                <a target='_blank' href='http://spaceshiplabs.com'><img class="footer-logo" src="/images/logospaceshiphome.png" width="136" alt="Spaceshiplabs"></a> &middot; 
+                <a target='_blank' href="https://github.com/el-sonny/gasolinapp">Github</a>
+                <a target='_blank' href="https://github.com/el-sonny/gasolinapp/wiki/Widget">Widget</a>
             </p>            
         </footer>
     
     </div>
+    <%- partial('global/analytics') -%> 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/select2/select2.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-sails/dist/angular-sails.min.js"></script>
-    <script src="/bower_components/angular-ui-select2/src/select2.js"></script>
     <script src="/bower_components/leaflet-dist/leaflet.js"></script>
     <script src="/bower_components/leaflet.markerclusterer/dist/leaflet.markercluster.js"></script>
     <script src="/bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
     <script src="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angularjs-geolocation/src/geolocation.js"></script>
     <script src="/js/controller.js"></script>
     <script src="/js/homeController.js"></script>
     <!--SCRIPTS END-->

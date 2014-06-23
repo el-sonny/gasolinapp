@@ -4,25 +4,29 @@
 	    window.entidades = <%- JSON.stringify(entidades) %>;
 	    window.selectedEntidad = <%- JSON.stringify(selectedEntidad) %>;
 	    window.selectedMunicipio = <%- JSON.stringify(selectedMunicipio) %>;
+	    window.isScrollable = <%- JSON.stringify(isScrollable) %>;
 	</script>
-	<div class='sidebar active'>
+	<div class='sidebar' ng-show="toggleSidebar">
 		<ul class="gas-icons">
-			<li><p>Gasolineras no evaluadas por PROFECO</p></li>
-			<li><p>Gasolineras no evaluadas por PROFECO</p></li>
-			<li><p>Gasolineras no evaluadas por PROFECO</p></li>
-			<li><p>Gasolineras no evaluadas por PROFECO</p></li>
+			<li class="animate-bg"><p>Gasolineras con semáforo verde</p></li>
+			<li class="animate-bg"><p>Gasolineras con semáforo amarillo</p></li>
+			<li class="animate-bg"><p>Gasolineras con semáforo rojo</p></li>
+			<li class="animate-bg"><p>Gasolineras sin verificación disponible</p></li>
 		</ul>
 	</div>
 	<div class="gas-numbers">
-		<div class="box">
-			<div class="arrow"></div>
-			<h4>324 gasolineras en Monterrey</h4>
-			<ul>
-				<li class="pin-gray"><strong>100</strong> con semaforo verde</li>
-				<li class="pin-yellow"><strong>20</strong> con amarillo</li>
-				<li class="pin-red"><strong>2</strong> con roja</li>
-				<li class="pin-gray"><strong>140</strong> no evaluadas</li>
-			</ul>			
+		<div class="gas-numbers-container">
+			<div class="arrow" ng-class="{right: toggleGasBox, left: !toggleGasBox}"><a href="#" ng-click="toggleGasBox = !toggleGasBox"></a></div>
+
+			<div class="box animated" ng-show="toggleGasBox">
+				<h4 >{{gasSummary()}}</h4>
+				<ul>
+					<li class="pin-gray"><strong >{{gasStats.VERDE}}</strong> con semáforo verde</li>
+					<li class="pin-yellow"><strong>{{gasStats.AMARILLO}}</strong> con semáforo amarillo</li>
+					<li class="pin-red"><strong>{{gasStats.ROJO}}</strong> con semáforo rojo</li>
+					<li class="pin-gray"><strong>{{gasStats.GRAY}}</strong> sin verificación disponible</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<leaflet bounds='bounds' center='mapCenter' ng-class='mapClass' class='map' layers="layers" markers='markers' defaults='options' ></leaflet>

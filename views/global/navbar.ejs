@@ -1,24 +1,40 @@
 <div id='header' class="navbar navbar-inverse navbar-fixed-top " role="navigation">
-  <div class='toggle-sidebar'></div>
+  <div class='toggle-sidebar' ng-click = "toggleSidebar = !toggleSidebar"></div>
   <div class="navbar-header">
     <a class="navbar-brand" href="/#!"><img class='logo' src='/images/gasolinapp.png' /></a>
   </div>
+
   <form class="navbar-form navbar-right" role="form">
-    <select ui-select2 ng-model="selectedEntidad" ng-change="get_gasolineras()" data-placeholder="Estados" class='entidadSelect'>
-      <option value=""></option>
-      <option ng-repeat='entidad in entidades' ng-value="entidad.nombre">{{entidad.nombre}}</option>
-    </select>
+    <p class="my-position widget"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
+    <div class="clear"></div>
+    <div class='styled-select'>
+      <select 
+        ng-model="selectedEntidad" 
+        ng-change="change_filter(true)"
+        data-placeholder="Estados" 
+        class='entidadSelect'
+        ng-options='e.nombre for e in entidades'
+      >
+        <option value="">Entidad</option>
+      </select>
+    </div>
 
-    <select ui-select2 ng-model="selectedMunicipio" ng-change="get_gasolineras()" data-placeholder="Municipios" class='entidadSelect'>
-      <option value=""></option>
-      <option ng-repeat='municipio in filteredMunicipios = (municipios | filter:munFilter())' ng-value="municipio.id">{{municipio.nombre}}, {{municipio.entidad.nombre}}</option>
-    </select>
-
+    <div class='styled-select'>
+      <select 
+        ng-model="selectedMunicipio" 
+        ng-change="change_filter(false)" 
+        data-placeholder="Municipios" 
+        class='entidadSelect' 
+        ng-options='m.nombre for m in filteredMunicipios = (municipios | filter:munFilter())'
+      >
+        <option value=''>Municipio</option>
+      </select>
+    </div>
+    <div class="clear"></div>
+    <p class="my-position mobile"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
   </form>
-  <p class="my-position"><a href=""><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="">Usar mi ubicación actual</a></p>
+  <p class="my-position desktop"><a href="" ng-click="getGeoLocalization()"><img src="/images/Flecha-Blan.png" alt="Mi posicion"></a> <a href="" ng-click="getGeoLocalization()">Usar mi ubicación actual</a></p>
   <div class="clear"></div>
   <%- partial('jumbotron') -%>
-  <div class="arrow-box"><div class="arrow arrow-head closed "></div> </div>
+  <div class="arrow-box"><div ng-show="!toggleJumbotron" class="arrow arrow-head" ng-click="toggleJumbotron = !toggleJumbotron"></div> </div>
 </div>
-
-<!-- rep in filteredReps = (representantes | filter:repFilter()) -->

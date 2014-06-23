@@ -10,9 +10,14 @@ module.exports = {
 	attributes: {
 		entidad:{
 			model : 'entidad',
+			index : true,
 		},
 		nombre : 'string',
-		range : 'json'
+		range : 'json',
+		gasolineras : {
+			collection: "gasolinera",
+      		via: "municipio"
+		}
 	},
 	migrate : 'safe',
 };

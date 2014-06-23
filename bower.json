@@ -20,17 +20,21 @@
     "tests"
   ],
   "dependencies": {
-     "angular-leaflet-directive": "~0.7.6",
-     "angular-bootstrap": "~0.11.0",
-     "angular-google-maps": "~1.0.18",
-     "Leaflet.awesome-markers": "~2.0.2",
-     "angular": "~1.2.16",
-     "leaflet": "~0.7.2",
-     "angular-sails": "~1.0.4",
-     "bootstrap": "~3.1.1",
-     "animate.css": "~3.1.1",
-    "angular-ui-select2" :  "~0.0.5",
-    "leaflet.markerclusterer": "~0.4.0"
+    "angular-leaflet-directive": "~0.7.6",
+    "angular-bootstrap": "~0.11.0",
+    "angular-google-maps": "~1.0.18",
+    "Leaflet.awesome-markers": "~2.0.2",
+    "angular": "~1.2.16",
+    "leaflet": "~0.7.2",
+    "angular-sails": "~1.0.4",
+    "bootstrap": "~3.1.1",
+    "animate.css": "~3.1.1",
+    "angular-ui-select2": "~0.0.5",
+    "leaflet.markerclusterer": "~0.4.0",
+    "less-prefixer": "*",
+    "angular-animate": "~1.2.16",
+    "ngAnimate-animate.css": "~0.1.1",
+    "angularjs-geolocation": "git://github.com/arunisrael/angularjs-geolocation.git#~0.1.1"
   },
   "homepage": "https://github.com/el-sonny/gasolinapp",
   "private": true

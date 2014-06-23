@@ -16,7 +16,9 @@
  *
  * The same command-line arguments are supported, e.g.:
  * `node app.js --silent --port=80 --prod`
- */
+ */ 
+process.chdir(__dirname);
+
 try {
  require('nodetime').profile({
     accountKey: '4eff3576329a69489924e9c875969157d7467987', 

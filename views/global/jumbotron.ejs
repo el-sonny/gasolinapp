@@ -1,10 +1,11 @@
-<div class="jumbotron-box hidden ">
+<div class="jumbotron-box" ng-cloak ng-show="toggleJumbotron">
 	<div class="jumbotron">
 	  <div class="container">
 	    <img src="/images/gasolinapp.png" alt="Gasolinapp" class="logo-jumbotron">
 	    <!--<h1>Gasolinapp</h1>-->
-	    <p>Las gasolineras en Mexico nos roban todos los dias. El gobierno no hace nada, es hora de que los ciudadanos tomemos el control!</p>
+	    <p>Esta aplicación combina los datos públicos de verificación de PROFECO y los datos de la plataforma "Tu gobierno en mapas" para presentarte un mapa interactivo de las gasolineras en México.</p>
 	    <img src="/images/app.png" alt="app">
 	  </div>
+  	<div class="arrow-box"><div ng-show="toggleJumbotron" class="arrow arrow-head" ng-click="toggleJumbotron = !toggleJumbotron"></div> </div>	  
 	</div>
 </div>
