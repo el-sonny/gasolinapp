@@ -14,13 +14,8 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
     $scope.toggleSidebar = true;
     var firstload = true;
     
-    if(selectedMunicipio){
-        for(x in municipios){
-            if(municipios[x].id == selectedMunicipio.id){
-                $scope.selectedMunicipio = municipios[x];
-            }
-        }
-    }
+    $scope.selectedMunicipio = find_municipio(selectedMunicipio);
+
     //Hash from url
     //Escuchando a a selectedEntidad y asignando su valor al path de la url
     $scope.$watch('selectedEntidad', function(path) {
@@ -33,20 +28,14 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
     }, function(path) {
       if(path || null){
         var estado = path.split("/")[1];
-        for(x in entidades){
-            if(entidades[x].nombre == estado) $scope.selectedEntidad = entidades[x];
-        }
+        $scope.selectedEntidad = find_entidad(estado);
         if(firstload) $scope.selectedMunicipio = null;        
         $scope.get_gasolineras();
         firstload = false;
       }else{
         firstload = false;
         if(selectedEntidad){
-            for(x in entidades){
-                if(entidades[x].id == selectedEntidad.id){
-                    $scope.selectedEntidad = entidades[x];
-                }
-            }
+            $scope.selectedEntidad = find_entidad(selectedEntidad.nombre);
         }
       }
     });
@@ -58,7 +47,7 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
                 url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 type: 'xyz',
                 layerOptions: {
-                    attribution: '<a href="http://spaceshiplabs.com">Spaceshiplabs.com</a> | <a href="http://gasolinapp.com">Gasolinapp.com</a>'
+                    attribution: '<a href="http://spaceshiplabs.com" target="_blank">Spaceshiplabs.com</a> | <a  target="_blank" href="http://gasolinapp.com">Gasolinapp.com</a>'
                 }
             }
         },
@@ -137,12 +126,14 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
 
     $scope.change_filter = function(clearmun){
         if(clearmun) $scope.selectedMunicipio = null;
+        $scope.coords = null;
         $scope.get_gasolineras();
     }
 
     $scope.getGeoLocalization = function(){
         geolocation.getLocation().then(function(data){
           $scope.coords = {lat:data.coords.latitude, long:data.coords.longitude};
+          $scope.get_gasolineras()
         });
     }
 
@@ -161,8 +152,15 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         if($scope.selectedMunicipio && $scope.selectedMunicipio != ""){
             params.municipio = $scope.selectedMunicipio.id;
         }
+        if($scope.coords){
+            params.coords = $scope.coords;
+        }
 		$sails.get("/gasolinera",params)
-		.success(function (data) {
+		.success(function (data){
+            if(data.entidad){
+                $scope.selectedEntidad = find_entidad(data.entidad.nombre);
+                $scope.selectedMunicipio = find_municipio(data);
+            }
             $scope.gasStats = {'VERDE':0,'AMARILLO':0,'ROJO':0,'GRAY':0};
             var munlytics = $scope.selectedMunicipio && $scope.selectedMunicipio.nombre ? $scope.selectedMunicipio.nombre : 'entidad completa';
             var entidadlics = $scope.selectedEntidad && $scope.selectedEntidad.nombre ? $scope.selectedEntidad.nombre : 'Todo Mexico';
@@ -252,3 +250,20 @@ function makeClusterIcon(cluster,color){
 String.prototype.capitalize = function() {
     return this.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
 };
+
+function find_municipio(municipio){
+    if(municipio){
+        for(x in municipios){
+            if(municipios[x].id == municipio.id){
+                return municipios[x];
+            }
+        }
+        return false;
+    }
+}
+function find_entidad(nombre){
+    for(x in entidades){
+        if(entidades[x].nombre == nombre) return entidades[x];
+    }
+    return false;
+}
