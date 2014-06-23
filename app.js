@@ -16,9 +16,8 @@
  *
  * The same command-line arguments are supported, e.g.:
  * `node app.js --silent --port=80 --prod`
- */ 
-process.chdir(__dirname);
- 
+ */
+
 // Ensure a "sails" can be located:
 var sails;
 try {
