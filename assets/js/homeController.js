@@ -1,4 +1,4 @@
-app.controller("homeController", function ($scope, $sails , $location, geolocation) {
+app.controller("homeController", function ($scope, $http, $location, geolocation) {
     
 	$scope.mapCenter = {};
     $scope.bounds = {}
@@ -155,7 +155,8 @@ app.controller("homeController", function ($scope, $sails , $location, geolocati
         if($scope.coords){
             params.coords = $scope.coords;
         }
-		$sails.get("/gasolinera",params)
+		//$sails.get("/gasolinera",params)
+        $http({method: 'GET', url: '/gasolinera',params:params})
 		.success(function (data){
             if(data.entidad){
                 $scope.selectedEntidad = find_entidad(data.entidad.nombre);

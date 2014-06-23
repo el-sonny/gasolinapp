@@ -1,4 +1,4 @@
-var app = angular.module("gasolinapp", ['ngSails','ngAnimate','leaflet-directive','geolocation']);
+var app = angular.module("gasolinapp", ['ngAnimate','leaflet-directive','geolocation']);
 app.config(['$locationProvider', function($location) {
   $location.hashPrefix('!');
 }]);
@@ -10,7 +10,7 @@ app.config(['$sailsProvider', function ($sailsProvider) {
 */
 
 
-app.controller("gasolineraCTL", function ($scope, $sails) {
+app.controller("gasolineraCTL", function ($scope) {
 	$scope.gas = gas;
 	$scope.mapCenter = {
 		lng : gas.coordenadas[0][0],

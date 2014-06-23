@@ -37,7 +37,7 @@ var jsFilesToInject = [
 	'bower_components/jquery/dist/jquery.min.js',
 	'bower_components/bootstrap/dist/js/bootstrap.min.js',
 	'bower_components/angular/angular.min.js',
-	'bower_components/angular-sails/dist/angular-sails.min.js',
+	//'bower_components/angular-sails/dist/angular-sails.min.js',
 	'bower_components/leaflet-dist/leaflet.js',
 	'bower_components/leaflet.markerclusterer/dist/leaflet.markercluster.js',
 	'bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js',
