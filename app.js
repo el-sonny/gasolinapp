@@ -17,7 +17,15 @@
  * The same command-line arguments are supported, e.g.:
  * `node app.js --silent --port=80 --prod`
  */
-
+try {
+ require('nodetime').profile({
+    accountKey: '4eff3576329a69489924e9c875969157d7467987', 
+    appName: 'Node.js Application'
+  });
+ } catch(e){
+	console.error('unable to start profilling');
+ }
+ 
 // Ensure a "sails" can be located:
 var sails;
 try {
