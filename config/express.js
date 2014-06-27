@@ -89,6 +89,11 @@ module.exports.express = {
 	//
 	// Example override:
 	// methodOverride: (function customMethodOverride (req, res, next) {})()
+	
+	customMiddleware: function (app) {
+        var express = require('../node_modules/sails/node_modules/express');
+        app.use(express.compress());
+    }
 };
 
 

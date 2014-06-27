@@ -1,0 +1,35 @@
+[1mdiff --git a/config/express.js b/config/express.js[m
+[1mindex bf1c386..72ce848 100644[m
+[1m--- a/config/express.js[m
+[1m+++ b/config/express.js[m
+[36m@@ -89,6 +89,11 @@[m [mmodule.exports.express = {[m
+ 	//[m
+ 	// Example override:[m
+ 	// methodOverride: (function customMethodOverride (req, res, next) {})()[m
+[32m+[m[41m	[m
+[32m+[m	[32mcustomMiddleware: function (app) {[m
+[32m+[m[32m        var express = require('../node_modules/sails/node_modules/express');[m
+[32m+[m[32m        app.use(express.compress());[m
+[32m+[m[32m    }[m
+ };[m
+ [m
+ [m
+[1mdiff --git a/config/sockets.js b/config/sockets.js[m
+[1mindex 6ed96d0..afa1e14 100644[m
+[1m--- a/config/sockets.js[m
+[1m+++ b/config/sockets.js[m
+[36m@@ -182,12 +182,12 @@[m [mmodule.exports.sockets = {[m
+   // Does Socket.IO need to GZIP the static files?[m
+   // This process is only done once and the computed output is stored in memory. [m
+   // So we don't have to spawn a gzip process for each request.[m
+[31m-  'browser client gzip': false,[m
+[32m+[m[32m  'browser client gzip': true,[m
+ [m
+   // Optional override function to serve all static files, [m
+   // including socket.io.js et al.[m
+   // Of the form :: function (req, res) { /* serve files */ }[m
+[31m-  'browser client handler': false,[m
+[32m+[m[32m  'browser client handler': true,[m
+ [m
+   // Meant to be used when running socket.io behind a proxy. [m
+   // Should be set to true when you want the location handshake to match the protocol of the origin. [m

@@ -182,12 +182,12 @@ module.exports.sockets = {
   // Does Socket.IO need to GZIP the static files?
   // This process is only done once and the computed output is stored in memory. 
   // So we don't have to spawn a gzip process for each request.
-  'browser client gzip': false,
+  'browser client gzip': true,
 
   // Optional override function to serve all static files, 
   // including socket.io.js et al.
   // Of the form :: function (req, res) { /* serve files */ }
-  'browser client handler': false,
+  'browser client handler': true,
 
   // Meant to be used when running socket.io behind a proxy. 
   // Should be set to true when you want the location handshake to match the protocol of the origin. 
